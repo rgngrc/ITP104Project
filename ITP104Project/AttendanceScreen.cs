@@ -35,5 +35,32 @@ namespace ITP104Project
             scanScreen.Show();
             this.Hide();
         }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            StudentsScreen studentsScreen = new StudentsScreen();
+            studentsScreen.Show();
+            this.Hide();
+        }
     }
 }

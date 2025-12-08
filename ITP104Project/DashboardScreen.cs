@@ -44,5 +44,12 @@ namespace ITP104Project
             attendanceScreen.Show();
             this.Hide();
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            StudentsScreen studentsScreen = new StudentsScreen();
+            studentsScreen.Show();
+            this.Hide();
+        }
     }
 }
