@@ -10,23 +10,21 @@ using System.Windows.Forms;
 
 namespace ITP104Project
 {
-    public partial class Dashnoard : Form
+    public partial class ScanScreen : Form
     {
-        public Dashnoard()
+        public ScanScreen()
         {
             InitializeComponent();
         }
 
-        private void Dashnoard_Load(object sender, EventArgs e)
+        private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void ScanScreen_Load(object sender, EventArgs e)
         {
-            ScanScreen scan = new ScanScreen();
-            this.Hide();
-             scan.Show();
+
         }
     }
 }
