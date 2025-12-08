@@ -21,5 +21,19 @@ namespace ITP104Project
         {
 
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            DashboardScreen dashboardScreen = new DashboardScreen();
+            dashboardScreen.Show();
+            this.Hide();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ScanScreen scanScreen = new ScanScreen();
+            scanScreen.Show();
+            this.Hide();
+        }
     }
 }

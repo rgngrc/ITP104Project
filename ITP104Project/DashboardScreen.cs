@@ -25,5 +25,24 @@ namespace ITP104Project
         private void button1_Click(object sender, EventArgs e)
         {
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            ScanScreen scanScreen = new ScanScreen();
+            scanScreen.Show();
+            this.Hide();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            AttendanceScreen attendanceScreen = new AttendanceScreen();
+            attendanceScreen.Show();
+            this.Hide();
+        }
     }
 }
