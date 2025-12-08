@@ -1,4 +1,4 @@
-﻿namespace FinalProject
+﻿namespace ITP104Project
 {
     partial class LoginScreen
     {
@@ -82,6 +82,7 @@
             this.lblLogin.Size = new System.Drawing.Size(185, 63);
             this.lblLogin.TabIndex = 2;
             this.lblLogin.Text = "LOGIN";
+            this.lblLogin.Click += new System.EventHandler(this.lblLogin_Click);
             // 
             // txtUsername
             // 

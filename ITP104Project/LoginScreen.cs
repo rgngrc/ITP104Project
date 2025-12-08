@@ -1,5 +1,4 @@
-﻿using ITP104Project;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
-namespace FinalProject
+namespace ITP104Project
 {
     // Simple authentication layout.
     public partial class LoginScreen : Form
@@ -67,6 +66,11 @@ namespace FinalProject
         }
 
         private void txtUsername_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblLogin_Click(object sender, EventArgs e)
         {
 
         }
