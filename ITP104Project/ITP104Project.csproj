@@ -46,16 +46,34 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DashnoardScreen.cs">
+    <Compile Include="AttendanceScreen.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DashnoardScreen.Designer.cs">
-      <DependentUpon>DashnoardScreen.cs</DependentUpon>
+    <Compile Include="AttendanceScreen.Designer.cs">
+      <DependentUpon>AttendanceScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DashboardScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DashboardScreen.Designer.cs">
+      <DependentUpon>DashboardScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LoginScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginScreen.Designer.cs">
+      <DependentUpon>LoginScreen.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="DashnoardScreen.resx">
-      <DependentUpon>DashnoardScreen.cs</DependentUpon>
+    <EmbeddedResource Include="AttendanceScreen.resx">
+      <DependentUpon>AttendanceScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DashboardScreen.resx">
+      <DependentUpon>DashboardScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginScreen.resx">
+      <DependentUpon>LoginScreen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

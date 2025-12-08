@@ -1,6 +1,6 @@
 ﻿namespace ITP104Project
 {
-    partial class Dashnoard
+    partial class AttendanceScreen
     {
         /// <summary>
         /// Required designer variable.
@@ -30,17 +30,17 @@
         {
             this.SuspendLayout();
             // 
-            // Dashnoard
+            // AttendanceScreen
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(111)))), ((int)(((byte)(157)))));
-            this.ClientSize = new System.Drawing.Size(1062, 673);
-            this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(111)))), ((int)(((byte)(157)))));
-            this.Name = "Dashnoard";
-            this.Text = "Dashboard - Student ID Scanning Attendance System";
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(50)))), ((int)(((byte)(80)))));
+            this.ClientSize = new System.Drawing.Size(1264, 681);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Name = "AttendanceScreen";
+            this.Text = "Attendance - Student ID Scan Attendance System";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.Dashnoard_Load);
+            this.Load += new System.EventHandler(this.AttendanceScreen_Load);
             this.ResumeLayout(false);
 
         }
@@ -48,4 +48,3 @@
         #endregion
     }
 }
-
