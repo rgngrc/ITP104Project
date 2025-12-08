@@ -10,14 +10,14 @@ using System.Windows.Forms;
 
 namespace ITP104Project
 {
-    public partial class Dashnoard : Form
+    public partial class DashboardScreen : Form
     {
-        public Dashnoard()
+        public DashboardScreen()
         {
             InitializeComponent();
         }
 
-        private void Dashnoard_Load(object sender, EventArgs e)
+        private void Dashboard_Load(object sender, EventArgs e)
         {
 
         }

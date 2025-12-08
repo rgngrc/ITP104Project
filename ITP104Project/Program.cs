@@ -16,7 +16,7 @@ namespace ITP104Project
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Dashnoard());
+            Application.Run(new LoginScreen());
         }
     }
 }
