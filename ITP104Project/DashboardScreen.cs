@@ -24,9 +24,9 @@ namespace ITP104Project
 
         private void button1_Click(object sender, EventArgs e)
         {
-            ScanScreen scan = new ScanScreen();
-            this.Hide();
-             scan.Show();
+            //ScanScreen scan = new ScanScreen();
+            //this.Hide();
+            //scan.Show();
         }
     }
 }
