@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StudentsScreen));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.button5 = new System.Windows.Forms.Button();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
@@ -42,16 +42,16 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvStudents = new System.Windows.Forms.DataGridView();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.button4 = new System.Windows.Forms.Button();
+            this.cmbSection = new System.Windows.Forms.ComboBox();
+            this.cmbYearLevel = new System.Windows.Forms.ComboBox();
+            this.cmbProgram = new System.Windows.Forms.ComboBox();
+            this.cmbDepartment = new System.Windows.Forms.ComboBox();
+            this.btnFilter = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -63,7 +63,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvStudents)).BeginInit();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -206,43 +206,43 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.GhostWhite;
-            this.panel3.Controls.Add(this.dataGridView1);
+            this.panel3.Controls.Add(this.dgvStudents);
             this.panel3.Location = new System.Drawing.Point(35, 438);
             this.panel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1483, 412);
             this.panel3.TabIndex = 5;
             // 
-            // dataGridView1
+            // dgvStudents
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightGray;
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.WhiteSmoke;
-            this.dataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(50)))), ((int)(((byte)(80)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridView1.ColumnHeadersHeight = 29;
-            this.dataGridView1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.EnableHeadersVisualStyles = false;
-            this.dataGridView1.GridColor = System.Drawing.Color.WhiteSmoke;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.Size = new System.Drawing.Size(1483, 412);
-            this.dataGridView1.TabIndex = 0;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dgvStudents.AllowUserToAddRows = false;
+            this.dgvStudents.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.LightGray;
+            this.dgvStudents.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
+            this.dgvStudents.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
+            this.dgvStudents.BackgroundColor = System.Drawing.Color.WhiteSmoke;
+            this.dgvStudents.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(50)))), ((int)(((byte)(80)))));
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvStudents.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            this.dgvStudents.ColumnHeadersHeight = 29;
+            this.dgvStudents.Cursor = System.Windows.Forms.Cursors.Default;
+            this.dgvStudents.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvStudents.EnableHeadersVisualStyles = false;
+            this.dgvStudents.GridColor = System.Drawing.Color.WhiteSmoke;
+            this.dgvStudents.Location = new System.Drawing.Point(0, 0);
+            this.dgvStudents.Margin = new System.Windows.Forms.Padding(4);
+            this.dgvStudents.Name = "dgvStudents";
+            this.dgvStudents.ReadOnly = true;
+            this.dgvStudents.RowHeadersWidth = 51;
+            this.dgvStudents.Size = new System.Drawing.Size(1483, 412);
+            this.dgvStudents.TabIndex = 0;
+            this.dgvStudents.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvStudents_CellContentClick);
             // 
             // textBox1
             // 
@@ -281,11 +281,11 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.GhostWhite;
-            this.panel2.Controls.Add(this.comboBox4);
-            this.panel2.Controls.Add(this.comboBox3);
-            this.panel2.Controls.Add(this.comboBox2);
-            this.panel2.Controls.Add(this.comboBox1);
-            this.panel2.Controls.Add(this.button4);
+            this.panel2.Controls.Add(this.cmbSection);
+            this.panel2.Controls.Add(this.cmbYearLevel);
+            this.panel2.Controls.Add(this.cmbProgram);
+            this.panel2.Controls.Add(this.cmbDepartment);
+            this.panel2.Controls.Add(this.btnFilter);
             this.panel2.Controls.Add(this.label6);
             this.panel2.Controls.Add(this.label5);
             this.panel2.Controls.Add(this.label4);
@@ -296,68 +296,70 @@
             this.panel2.Size = new System.Drawing.Size(1483, 133);
             this.panel2.TabIndex = 0;
             // 
-            // comboBox4
+            // cmbSection
             // 
-            this.comboBox4.DropDownHeight = 120;
-            this.comboBox4.Font = new System.Drawing.Font("Verdana", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.IntegralHeight = false;
-            this.comboBox4.Location = new System.Drawing.Point(1000, 62);
-            this.comboBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(215, 40);
-            this.comboBox4.TabIndex = 12;
+            this.cmbSection.DropDownHeight = 120;
+            this.cmbSection.Font = new System.Drawing.Font("Verdana", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbSection.FormattingEnabled = true;
+            this.cmbSection.IntegralHeight = false;
+            this.cmbSection.Location = new System.Drawing.Point(1000, 62);
+            this.cmbSection.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cmbSection.Name = "cmbSection";
+            this.cmbSection.Size = new System.Drawing.Size(215, 40);
+            this.cmbSection.TabIndex = 12;
+            this.cmbSection.SelectedIndexChanged += new System.EventHandler(this.cmbSection_SelectedIndexChanged);
             // 
-            // comboBox3
+            // cmbYearLevel
             // 
-            this.comboBox3.DropDownHeight = 120;
-            this.comboBox3.Font = new System.Drawing.Font("Verdana", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.IntegralHeight = false;
-            this.comboBox3.Location = new System.Drawing.Point(677, 62);
-            this.comboBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(215, 40);
-            this.comboBox3.TabIndex = 11;
+            this.cmbYearLevel.DropDownHeight = 120;
+            this.cmbYearLevel.Font = new System.Drawing.Font("Verdana", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbYearLevel.FormattingEnabled = true;
+            this.cmbYearLevel.IntegralHeight = false;
+            this.cmbYearLevel.Location = new System.Drawing.Point(677, 62);
+            this.cmbYearLevel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cmbYearLevel.Name = "cmbYearLevel";
+            this.cmbYearLevel.Size = new System.Drawing.Size(215, 40);
+            this.cmbYearLevel.TabIndex = 11;
             // 
-            // comboBox2
+            // cmbProgram
             // 
-            this.comboBox2.DropDownHeight = 120;
-            this.comboBox2.Font = new System.Drawing.Font("Verdana", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.IntegralHeight = false;
-            this.comboBox2.Location = new System.Drawing.Point(360, 62);
-            this.comboBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(215, 40);
-            this.comboBox2.TabIndex = 10;
+            this.cmbProgram.DropDownHeight = 120;
+            this.cmbProgram.Font = new System.Drawing.Font("Verdana", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbProgram.FormattingEnabled = true;
+            this.cmbProgram.IntegralHeight = false;
+            this.cmbProgram.Location = new System.Drawing.Point(360, 62);
+            this.cmbProgram.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cmbProgram.Name = "cmbProgram";
+            this.cmbProgram.Size = new System.Drawing.Size(215, 40);
+            this.cmbProgram.TabIndex = 10;
             // 
-            // comboBox1
+            // cmbDepartment
             // 
-            this.comboBox1.DropDownHeight = 120;
-            this.comboBox1.Font = new System.Drawing.Font("Verdana", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.IntegralHeight = false;
-            this.comboBox1.Location = new System.Drawing.Point(55, 62);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(215, 40);
-            this.comboBox1.TabIndex = 9;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.cmbDepartment.DropDownHeight = 120;
+            this.cmbDepartment.Font = new System.Drawing.Font("Verdana", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbDepartment.FormattingEnabled = true;
+            this.cmbDepartment.IntegralHeight = false;
+            this.cmbDepartment.Location = new System.Drawing.Point(55, 62);
+            this.cmbDepartment.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cmbDepartment.Name = "cmbDepartment";
+            this.cmbDepartment.Size = new System.Drawing.Size(215, 40);
+            this.cmbDepartment.TabIndex = 9;
+            this.cmbDepartment.SelectedIndexChanged += new System.EventHandler(this.cmbDepartment_SelectedIndexChanged);
             // 
-            // button4
+            // btnFilter
             // 
-            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(50)))), ((int)(((byte)(80)))));
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("Verdana", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.ForeColor = System.Drawing.SystemColors.Control;
-            this.button4.Location = new System.Drawing.Point(1313, 33);
-            this.button4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(128, 55);
-            this.button4.TabIndex = 8;
-            this.button4.Text = "Filter";
-            this.button4.UseVisualStyleBackColor = false;
+            this.btnFilter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(50)))), ((int)(((byte)(80)))));
+            this.btnFilter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFilter.Font = new System.Drawing.Font("Verdana", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFilter.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnFilter.Location = new System.Drawing.Point(1313, 33);
+            this.btnFilter.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnFilter.Name = "btnFilter";
+            this.btnFilter.Size = new System.Drawing.Size(128, 55);
+            this.btnFilter.TabIndex = 8;
+            this.btnFilter.Text = "Filter";
+            this.btnFilter.UseVisualStyleBackColor = false;
+            this.btnFilter.Click += new System.EventHandler(this.btnFilter_Click);
             // 
             // label6
             // 
@@ -437,7 +439,7 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvStudents)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.ResumeLayout(false);
@@ -464,12 +466,12 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox4;
-        private System.Windows.Forms.ComboBox comboBox3;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.Button btnFilter;
+        private System.Windows.Forms.ComboBox cmbDepartment;
+        private System.Windows.Forms.ComboBox cmbSection;
+        private System.Windows.Forms.ComboBox cmbYearLevel;
+        private System.Windows.Forms.ComboBox cmbProgram;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvStudents;
     }
 }

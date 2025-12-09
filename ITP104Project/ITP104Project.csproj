@@ -123,6 +123,7 @@
     <Compile Include="AttendanceScreen.Designer.cs">
       <DependentUpon>AttendanceScreen.cs</DependentUpon>
     </Compile>
+    <Compile Include="AuthService.cs" />
     <Compile Include="DashboardScreen.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -130,6 +131,7 @@
       <DependentUpon>DashboardScreen.cs</DependentUpon>
     </Compile>
     <Compile Include="DBConnect.cs" />
+    <Compile Include="DBConnection.cs" />
     <Compile Include="LoginScreen.cs">
       <SubType>Form</SubType>
     </Compile>
