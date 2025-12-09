@@ -1,5 +1,6 @@
-﻿using System;
-using MySql.Data.MySqlClient;
+﻿using MySql.Data.MySqlClient;
+using System;
+using System.Data.Common;
 using System.Windows.Forms;
 
 namespace ITP104Project
@@ -14,18 +15,12 @@ namespace ITP104Project
 
             try
             {
-                // Use DBConnect.GetConnection() - it attempts to open the connection inside the method
+                // Use a new connection each time to avoid "connection already open" errors
                 using (MySqlConnection conn = DBConnect.GetConnection())
                 {
-                    // Check if the connection was successful before proceeding
-                    if (conn == null)
-                    {
-                        // DBConnect already displayed the error message, just return false
-                        return false;
-                    }
+                    conn.Open();
 
-                    // SQL query is parameterized to prevent SQL injection
-                    string query = "SELECT admin_role FROM Users WHERE username = @username AND password = @password";
+                    string query = "SELECT * FROM Users WHERE username = @username AND password = @password";
 
                     using (MySqlCommand cmd = new MySqlCommand(query, conn))
                     {
@@ -36,9 +31,8 @@ namespace ITP104Project
                         {
                             if (reader.Read())
                             {
-                                // Login successful. Retrieve the role.
                                 role = reader["admin_role"].ToString();
-                                return true;
+                                return true; // login successful
                             }
                         }
                     }
@@ -46,27 +40,25 @@ namespace ITP104Project
             }
             catch (Exception ex)
             {
-                // Catch any query execution errors not handled by DBConnect
-                MessageBox.Show("An error occurred during login verification: " + ex.Message, "System Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error connecting to database: " + ex.Message);
             }
 
-            return false; // Login failed (bad credentials or system error)
+            return false; // login failed
         }
 
-        // The UsernameExists method is optional but included for completeness.
+        // Optional: Method to check if username exists
         public static bool UsernameExists(string username)
         {
             try
             {
                 using (MySqlConnection conn = DBConnect.GetConnection())
                 {
-                    if (conn == null) return false;
+                    conn.Open();
 
                     string query = "SELECT COUNT(*) FROM Users WHERE username = @username";
                     using (MySqlCommand cmd = new MySqlCommand(query, conn))
                     {
                         cmd.Parameters.AddWithValue("@username", username);
-                        // ExecuteScalar returns the first column of the first row (the count)
                         int count = Convert.ToInt32(cmd.ExecuteScalar());
                         return count > 0;
                     }
@@ -74,8 +66,7 @@ namespace ITP104Project
             }
             catch (Exception ex)
             {
-                // This is less critical, but good practice to catch
-                MessageBox.Show("Error checking username: " + ex.Message, "System Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error checking username: " + ex.Message);
                 return false;
             }
         }

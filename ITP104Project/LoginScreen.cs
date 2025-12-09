@@ -53,24 +53,11 @@ namespace ITP104Project
         // Handles the click event for the Login button.
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            string username = txtUsername.Text.Trim();
-            string password = txtPassword.Text.Trim();
-
-            // Call AuthService to validate login
-            if (AuthService.Login(username, password, out string role))
-            {
-                MessageBox.Show("Login Successful! Welcome " + username + " (Role: " + role + ")", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                // Open Dashboard
-                DashboardScreen dashboard = new DashboardScreen();
-                dashboard.Show();
-                this.Hide();
-            }
-            else
-            {
-                // AuthService handled connection errors, so this means invalid credentials
-                MessageBox.Show("Invalid Username or Password.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
+            // On successful login, opens the DashboardScreen.
+            DashboardScreen dashboard = new DashboardScreen();
+            dashboard.Show();
+            // Hides the current LoginScreen.
+            this.Hide();
         }
 
         private void txtPassword_TextChanged(object sender, EventArgs e)
@@ -84,11 +71,6 @@ namespace ITP104Project
         }
 
         private void lblLogin_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panelUsername_Paint(object sender, PaintEventArgs e)
         {
 
         }
