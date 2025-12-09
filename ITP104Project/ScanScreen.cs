@@ -1,13 +1,7 @@
 ﻿using AForge.Video;
 using AForge.Video.DirectShow;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ITP104Project
@@ -43,52 +37,29 @@ namespace ITP104Project
             pictureBox6.Image = (Bitmap)eventArgs.Frame.Clone();
         }
 
-        private void ScanScreen_FormClosing(object sender, FormClosingEventArgs e)
+        private void StopCamera()
         {
-            if (cam != null && cam.IsRunning)
+            try
             {
-                cam.SignalToStop();
-                cam.WaitForStop();
+                if (cam != null && cam.IsRunning)
+                {
+                    cam.SignalToStop();
+                    cam.WaitForStop();
+                }
+            }
+            catch
+            {
             }
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
+        private void ScanScreen_FormClosing(object sender, FormClosingEventArgs e)
         {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel4_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-
+            StopCamera();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
+            StopCamera();
             AttendanceScreen attendanceScreen = new AttendanceScreen();
             attendanceScreen.Show();
             this.Hide();
@@ -96,6 +67,7 @@ namespace ITP104Project
 
         private void button2_Click(object sender, EventArgs e)
         {
+            StopCamera();
             DashboardScreen dashboardScreen = new DashboardScreen();
             dashboardScreen.Show();
             this.Hide();
@@ -103,9 +75,18 @@ namespace ITP104Project
 
         private void button5_Click(object sender, EventArgs e)
         {
+            StopCamera();
             StudentsScreen studentsScreen = new StudentsScreen();
             studentsScreen.Show();
             this.Hide();
         }
+
+        private void panel1_Paint(object sender, PaintEventArgs e) { }
+        private void label1_Click(object sender, EventArgs e) { }
+        private void label3_Click(object sender, EventArgs e) { }
+        private void pictureBox6_Click(object sender, EventArgs e) { }
+        private void panel4_Paint(object sender, PaintEventArgs e) { }
+        private void label5_Click(object sender, EventArgs e) { }
+        private void label6_Click(object sender, EventArgs e) { }
     }
 }
