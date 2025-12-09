@@ -228,9 +228,11 @@ namespace ITP104Project
             object deptValue = cmbDepartment.SelectedValue;
             object progValue = cmbProgram.SelectedValue;
             string selectedYearLevel = cmbYearLevel.SelectedItem?.ToString();
-
-            // Retrieve SelectedValue as an object. It will be DBNull.Value for "All Sections".
             object selectedSectionValue = cmbSection.SelectedValue;
+
+            // 🆕 GET SEARCH TERM: Get the text from your search input box.
+            // Assuming your search TextBox is named 'txtSearchName'.
+            string searchTerm = txtSearchName.Text.Trim();
 
             // Base query with joins to get Program and Department info
             string query = @"
@@ -274,6 +276,13 @@ namespace ITP104Project
                 filterWhereClause += " AND S.student_section = @section ";
             }
 
+            // 🆕 ADD NAME SEARCH FILTER: Uses LIKE and wildcard % for partial matching, case-insensitive.
+            if (!string.IsNullOrEmpty(searchTerm))
+            {
+                // We use LCASE(S.full_name) and LCASE(@searchTerm) for a case-insensitive search.
+                filterWhereClause += " AND LCASE(S.full_name) LIKE LCASE(@searchTerm) ";
+            }
+
             query += filterWhereClause + " ORDER BY S.student_id ASC;";
 
             using (MySqlConnection connection = DBConnect.GetConnection())
@@ -295,6 +304,11 @@ namespace ITP104Project
                         // Add section parameter only if value is not DBNull.Value
                         if (selectedSectionValue != null && selectedSectionValue != DBNull.Value)
                             cmd.Parameters.AddWithValue("@section", selectedSectionValue.ToString());
+
+                        // 🆕 ADD SEARCH PARAMETER: Wrap search term in '%' for LIKE
+                        if (!string.IsNullOrEmpty(searchTerm))
+                            cmd.Parameters.AddWithValue("@searchTerm", "%" + searchTerm + "%");
+
 
                         MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
                         DataTable studentTable = new DataTable();
@@ -356,6 +370,13 @@ namespace ITP104Project
         {
             // If you want the grid to auto-refresh whenever the section changes, uncomment this:
             // LoadStudentData(); 
+        }
+
+        // 🆕 NEW EVENT HANDLER: Live search when typing
+        private void txtSearchName_TextChanged(object sender, EventArgs e)
+        {
+            // Reloads the student grid every time the user types a character
+            LoadStudentData();
         }
 
         // Filter button handler

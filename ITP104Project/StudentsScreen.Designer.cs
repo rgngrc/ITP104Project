@@ -43,7 +43,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.dgvStudents = new System.Windows.Forms.DataGridView();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtSearchName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -186,7 +186,7 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(111)))), ((int)(((byte)(157)))));
             this.panel1.Controls.Add(this.panel3);
-            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.txtSearchName);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.panel2);
@@ -236,16 +236,16 @@
             this.dgvStudents.Size = new System.Drawing.Size(1483, 412);
             this.dgvStudents.TabIndex = 0;
             // 
-            // textBox1
+            // txtSearchName
             // 
-            this.textBox1.Font = new System.Drawing.Font("Verdana", 14F);
-            this.textBox1.ForeColor = System.Drawing.Color.Gray;
-            this.textBox1.Location = new System.Drawing.Point(35, 222);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(799, 36);
-            this.textBox1.TabIndex = 6;
-            this.textBox1.Text = "Search";
+            this.txtSearchName.Font = new System.Drawing.Font("Verdana", 14F);
+            this.txtSearchName.ForeColor = System.Drawing.Color.Gray;
+            this.txtSearchName.Location = new System.Drawing.Point(35, 222);
+            this.txtSearchName.Margin = new System.Windows.Forms.Padding(4);
+            this.txtSearchName.Name = "txtSearchName";
+            this.txtSearchName.Size = new System.Drawing.Size(799, 36);
+            this.txtSearchName.TabIndex = 6;
+            this.txtSearchName.TextChanged += new System.EventHandler(this.txtSearchName_TextChanged);
             // 
             // label2
             // 
@@ -453,7 +453,7 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtSearchName;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
