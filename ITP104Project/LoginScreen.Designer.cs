@@ -172,6 +172,7 @@
             this.panelUsername.Name = "panelUsername";
             this.panelUsername.Size = new System.Drawing.Size(511, 55);
             this.panelUsername.TabIndex = 10;
+            this.panelUsername.Paint += new System.Windows.Forms.PaintEventHandler(this.panelUsername_Paint);
             // 
             // txtPassword
             // 
