@@ -8,49 +8,41 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
-using System.Configuration;
 using System.Data;
 
 namespace ITP104Project
 {
     public partial class StudentsScreen : Form
     {
-        private string connectionString;
 
         public StudentsScreen()
         {
             InitializeComponent();
-
-            connectionString = ConfigurationManager.ConnectionStrings["dbprojectConnection"].ConnectionString;
 
             LoadStudentData();
         }
 
         private void LoadStudentData()
         {
-            // Check if connection string was successfully retrieved
-            if (string.IsNullOrEmpty(connectionString))
+
+            string query = "SELECT * FROM Students;";
+
+            using (MySqlConnection connection = DBConnect.GetConnection())
             {
-                MessageBox.Show("Connection string not found in App.config.", "Configuration Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            string query = "SELECT student_id, full_name, program_id, year_level, student_section FROM Students;";
-
-            using (MySqlConnection connection = new MySqlConnection(connectionString))
-            {
-                try
+                if (connection != null)
                 {
-                    connection.Open();
-                    MySqlDataAdapter adapter = new MySqlDataAdapter(query, connection);
-                    DataTable studentTable = new DataTable();
+                    try
+                    {
+                        MySqlDataAdapter adapter = new MySqlDataAdapter(query, connection);
+                        DataTable studentTable = new DataTable();
 
-                    adapter.Fill(studentTable);
-                    dataGridView1.DataSource = studentTable;
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Failed to load student data: " + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        adapter.Fill(studentTable);
+                        dataGridView1.DataSource = studentTable;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Failed to retrieve student data: " + ex.Message, "Query Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
         }
@@ -123,6 +115,11 @@ namespace ITP104Project
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
