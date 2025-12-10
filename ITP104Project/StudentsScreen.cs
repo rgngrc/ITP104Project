@@ -1,9 +1,10 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Data;
-using System.Windows.Forms;
-using MySql.Data.MySqlClient;
 using System.Drawing;
 using System.Linq;
+using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace ITP104Project
 {
@@ -373,11 +374,7 @@ namespace ITP104Project
         }
 
         // 🆕 NEW EVENT HANDLER: Live search when typing
-        private void txtSearchName_TextChanged(object sender, EventArgs e)
-        {
-            // Reloads the student grid every time the user types a character
-            LoadStudentData();
-        }
+
 
         // Filter button handler
         private void btnFilter_Click(object sender, EventArgs e)
@@ -409,5 +406,99 @@ namespace ITP104Project
             this.Hide();
         }
 
+        private void txtSearchName_TextChanged(object sender, EventArgs e)
+        {
+
+            if (string.IsNullOrEmpty(txtSearchName.Text))
+            {
+                LoadStudentData();
+            }
+        }
+
+        // Search btn
+        private void button4_Click(object sender, EventArgs e)
+        {
+            string searchText = txtSearchName.Text.Trim();
+
+            // Load current filter values
+            object deptValue = cmbDepartment.SelectedValue;
+            object progValue = cmbProgram.SelectedValue;
+            string selectedYearLevel = cmbYearLevel.SelectedItem?.ToString();
+            object selectedSectionValue = cmbSection.SelectedValue;
+
+            string query = @"
+        SELECT
+            S.student_id AS 'ID No.',
+            S.full_name AS 'Full Name',
+            S.year_level AS 'Year Level',
+            S.student_section AS 'Section',
+            P.program_code AS 'Program',
+            D.dept_name AS 'Department',
+            S.student_status AS 'Status'
+        FROM Students S
+        INNER JOIN Programs P ON S.program_id = P.program_id
+        INNER JOIN Departments D ON P.dept_id = D.dept_id
+        WHERE 1=1
+    ";
+
+            // Apply filters like LoadStudentData() does
+            if (deptValue != null && deptValue != DBNull.Value)
+                query += " AND D.dept_id = @deptId";
+
+            if (progValue != null && progValue != DBNull.Value)
+                query += " AND P.program_id = @progId";
+
+            if (!string.IsNullOrEmpty(selectedYearLevel) && selectedYearLevel != "All Year Levels")
+                query += " AND S.year_level = @yearLevel";
+
+            if (selectedSectionValue != null && selectedSectionValue != DBNull.Value)
+                query += " AND S.student_section = @section";
+
+            // 🔍 Search: ID or Name
+            if (!string.IsNullOrEmpty(searchText))
+                query += " AND (S.student_id LIKE @search OR S.full_name LIKE @search)";
+
+            query += " ORDER BY S.student_id ASC;";
+
+            using (MySqlConnection connection = DBConnect.GetConnection())
+            {
+                if (connection != null)
+                {
+                    try
+                    {
+                        MySqlCommand cmd = new MySqlCommand(query, connection);
+
+                        // Parameters for filters
+                        if (deptValue != null && deptValue != DBNull.Value)
+                            cmd.Parameters.AddWithValue("@deptId", deptValue);
+
+                        if (progValue != null && progValue != DBNull.Value)
+                            cmd.Parameters.AddWithValue("@progId", progValue);
+
+                        if (!string.IsNullOrEmpty(selectedYearLevel) && selectedYearLevel != "All Year Levels")
+                            cmd.Parameters.AddWithValue("@yearLevel", selectedYearLevel);
+
+                        if (selectedSectionValue != null && selectedSectionValue != DBNull.Value)
+                            cmd.Parameters.AddWithValue("@section", selectedSectionValue.ToString());
+
+                        // Search parameter
+                        if (!string.IsNullOrEmpty(searchText))
+                            cmd.Parameters.AddWithValue("@search", "%" + searchText + "%");
+
+                        MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
+                        DataTable dt = new DataTable();
+                        adapter.Fill(dt);
+
+                        dgvStudents.DataSource = dt;
+                        dgvStudents.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error searching student: " + ex.Message,
+                            "Search Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+        }
     }
 }

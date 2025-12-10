@@ -41,6 +41,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnButton = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.dgvStudents = new System.Windows.Forms.DataGridView();
             this.txtSearchName = new System.Windows.Forms.TextBox();
@@ -185,6 +186,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(111)))), ((int)(((byte)(157)))));
+            this.panel1.Controls.Add(this.btnButton);
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.txtSearchName);
             this.panel1.Controls.Add(this.label2);
@@ -195,6 +197,18 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1755, 993);
             this.panel1.TabIndex = 21;
+            // 
+            // btnButton
+            // 
+            this.btnButton.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnButton.ForeColor = System.Drawing.SystemColors.Window;
+            this.btnButton.Location = new System.Drawing.Point(860, 221);
+            this.btnButton.Name = "btnButton";
+            this.btnButton.Size = new System.Drawing.Size(162, 37);
+            this.btnButton.TabIndex = 7;
+            this.btnButton.Text = "Search";
+            this.btnButton.UseVisualStyleBackColor = false;
+            this.btnButton.Click += new System.EventHandler(this.button4_Click);
             // 
             // panel3
             // 
@@ -465,5 +479,6 @@
         private System.Windows.Forms.ComboBox cmbProgram;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.DataGridView dgvStudents;
+        private System.Windows.Forms.Button btnButton;
     }
 }

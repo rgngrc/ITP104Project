@@ -14,18 +14,11 @@ namespace ITP104Project
 
             try
             {
-                // Use DBConnect.GetConnection() - it attempts to open the connection inside the method
                 using (MySqlConnection conn = DBConnect.GetConnection())
                 {
-                    // Check if the connection was successful before proceeding
-                    if (conn == null)
-                    {
-                        // DBConnect already displayed the error message, just return false
-                        return false;
-                    }
+                    conn.Open(); // OPEN HERE (Correct place)
 
-                    // SQL query is parameterized to prevent SQL injection
-                    string query = "SELECT admin_role FROM Users WHERE username = @username AND password = @password";
+                    string query = "SELECT admin_role FROM Users WHERE username=@username AND password=@password";
 
                     using (MySqlCommand cmd = new MySqlCommand(query, conn))
                     {
@@ -36,7 +29,6 @@ namespace ITP104Project
                         {
                             if (reader.Read())
                             {
-                                // Login successful. Retrieve the role.
                                 role = reader["admin_role"].ToString();
                                 return true;
                             }
@@ -46,12 +38,12 @@ namespace ITP104Project
             }
             catch (Exception ex)
             {
-                // Catch any query execution errors not handled by DBConnect
-                MessageBox.Show("An error occurred during login verification: " + ex.Message, "System Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Database Error: " + ex.Message);
             }
 
-            return false; // Login failed (bad credentials or system error)
+            return false;
         }
+
 
         // The UsernameExists method is optional but included for completeness.
         public static bool UsernameExists(string username)
