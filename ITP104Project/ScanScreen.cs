@@ -19,7 +19,7 @@ namespace ITP104Project
     public partial class ScanScreen : Form
     {
         //Change IP address according to your mobile IP Webcam app's IP
-        private string phoneCameraURL = "http://192.168.1.6:8080/shot.jpg";
+        private string phoneCameraURL = "http://192.168.1.3:8080";
         private Timer frameTimer;
         private BarcodeReader reader;
 
