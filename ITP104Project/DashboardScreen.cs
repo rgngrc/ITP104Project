@@ -102,5 +102,28 @@ namespace ITP104Project
             this.Hide();
         }
 
+        private void HandleLogout()
+        {
+            DialogResult result = MessageBox.Show("Are you sure you want to log out?",
+                                                  "Confirm Logout",
+                                                  MessageBoxButtons.YesNo,
+                                                  MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                // Clear the session data using the centralized service
+                AuthService.Logout();
+
+                // Open the Login screen and close the current form
+                LoginScreen loginScreen = new LoginScreen();
+                loginScreen.Show();
+                this.Close();
+            }
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            HandleLogout();
+        }
     }
 }

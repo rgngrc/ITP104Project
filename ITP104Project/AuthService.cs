@@ -1,13 +1,20 @@
 ﻿using System;
 using MySql.Data.MySqlClient;
 using System.Windows.Forms;
+using System.Data;
 
 namespace ITP104Project
 {
-    internal class AuthService
+
+    public static class CurrentSession
+    {
+        // Store the role of the logged-in user for permission checks later
+        public static string UserRole { get; set; } = string.Empty;
+    }
+
+    public static class AuthService
     {
         // Attempts to log in. Returns true if successful, false otherwise.
-        // Outputs the user's role if login succeeds.
         public static bool Login(string username, string password, out string role)
         {
             role = string.Empty;
@@ -16,7 +23,10 @@ namespace ITP104Project
             {
                 using (MySqlConnection conn = DBConnect.GetConnection())
                 {
-                    conn.Open(); // OPEN HERE (Correct place)
+                    if (conn.State != ConnectionState.Open)
+                    {
+                        conn.Open();
+                    }
 
                     string query = "SELECT admin_role FROM Users WHERE username=@username AND password=@password";
 
@@ -30,6 +40,10 @@ namespace ITP104Project
                             if (reader.Read())
                             {
                                 role = reader["admin_role"].ToString();
+
+                                // SESSION START
+                                CurrentSession.UserRole = role;
+
                                 return true;
                             }
                         }
@@ -38,38 +52,17 @@ namespace ITP104Project
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Database Error: " + ex.Message);
+                MessageBox.Show("Database Error during login: " + ex.Message, "Login Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             return false;
         }
 
-
-        // The UsernameExists method is optional but included for completeness.
-        public static bool UsernameExists(string username)
+        // Logs out the current user by clearing session data
+        public static void Logout()
         {
-            try
-            {
-                using (MySqlConnection conn = DBConnect.GetConnection())
-                {
-                    if (conn == null) return false;
-
-                    string query = "SELECT COUNT(*) FROM Users WHERE username = @username";
-                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
-                    {
-                        cmd.Parameters.AddWithValue("@username", username);
-                        // ExecuteScalar returns the first column of the first row (the count)
-                        int count = Convert.ToInt32(cmd.ExecuteScalar());
-                        return count > 0;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                // This is less critical, but good practice to catch
-                MessageBox.Show("Error checking username: " + ex.Message, "System Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
+            // Clear the static session variables that track the logged-in user
+            CurrentSession.UserRole = string.Empty;
         }
     }
 }
