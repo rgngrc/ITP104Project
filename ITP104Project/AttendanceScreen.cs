@@ -9,7 +9,6 @@ namespace ITP104Project
 {
     public partial class AttendanceScreen : Form
     {
-        // Constructor and Load Event
         public AttendanceScreen()
         {
             InitializeComponent();
@@ -18,16 +17,15 @@ namespace ITP104Project
 
         private void AttendanceScreen_Load(object sender, EventArgs e)
         {
-            // 1. Populate static/independent filters
+            // Populate filters
             PopulateDepartments();
             PopulateYearLevels();
 
-            // 2. Load attendance data for today (or selected date) by default
-            // Assumes dtpFilterDate is named correctly.
-            LoadAttendanceData(dateTimePicker1.Value.Date);
+            // Load attendance data for today by default
+            LoadAttendanceData(dtpAttendanceDate.Value.Date);
         }
 
-        // --- DATABASE CONNECTION AND DATA LOGIC ---
+        // DATABASE CONNECTION AND DATA LOGIC
 
         private void PopulateDepartments()
         {
@@ -43,7 +41,6 @@ namespace ITP104Project
                         DataTable dt = new DataTable();
                         adapter.Fill(dt);
 
-                        // Add a default "All" option
                         DataRow allRow = dt.NewRow();
                         allRow["dept_name"] = "All Departments";
                         allRow["dept_id"] = DBNull.Value;
@@ -89,7 +86,6 @@ namespace ITP104Project
                     {
                         MySqlCommand cmd = new MySqlCommand(query, connection);
 
-                        // Add parameter only if necessary
                         if (deptId != null && deptId != DBNull.Value)
                         {
                             cmd.Parameters.AddWithValue("@deptId", deptId);
@@ -99,7 +95,6 @@ namespace ITP104Project
                         DataTable dt = new DataTable();
                         adapter.Fill(dt);
 
-                        // Add a default "All" option
                         DataRow allRow = dt.NewRow();
                         allRow["program_name"] = "All Programs";
                         allRow["program_id"] = DBNull.Value;
@@ -119,7 +114,7 @@ namespace ITP104Project
 
         private void PopulateYearLevels()
         {
-            // Static list for Year Levels
+            // List for Year Levels
             string[] yearLevels = new string[] { "All Year Levels", "First Year", "Second Year", "Third Year", "Fourth Year" };
             cmbYearLevel.DataSource = yearLevels;
         }
@@ -132,7 +127,7 @@ namespace ITP104Project
             cmbSection.DataSource = null;
             cmbSection.Items.Clear();
 
-            // Check 1: Do not proceed if Program or Year Level filters are not specific
+            // Does not proceed if Program or Year Level filters are not specific
             if (selectedProgramId == null || selectedProgramId == DBNull.Value || selectedYearLevel == "All Year Levels")
             {
                 cmbSection.Items.Add("Select Program/Year");
@@ -161,7 +156,6 @@ namespace ITP104Project
                         DataTable dt = new DataTable();
                         adapter.Fill(dt);
 
-                        // Add an "All Sections" option
                         DataRow allRow = dt.NewRow();
                         allRow["student_section"] = "All Sections";
                         dt.Rows.InsertAt(allRow, 0);
@@ -265,7 +259,7 @@ namespace ITP104Project
         }
 
 
-        // --- UI EVENT HANDLERS ---
+        // UI EVENT HANDLERS
 
         // Cascading Logic: Department changes -> Reload Programs
         private void cmbDepartment_SelectedIndexChanged(object sender, EventArgs e)
@@ -290,38 +284,58 @@ namespace ITP104Project
         private void btnFilter_Click(object sender, EventArgs e)
         {
             // Get the date directly from the DateTimePicker control
-            DateTime selectedDate = dateTimePicker1.Value.Date;
+            DateTime selectedDate = dtpAttendanceDate.Value.Date;
 
             LoadAttendanceData(selectedDate);
         }
 
-        // --- Navigation and Unused Handlers ---
+        // Navigation buttons
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btnDashboard_Click(object sender, EventArgs e)
         {
             DashboardScreen dashboardScreen = new DashboardScreen();
             dashboardScreen.Show();
             this.Hide();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnScan_Click(object sender, EventArgs e)
         {
             ScanScreen scanScreen = new ScanScreen();
             scanScreen.Show();
             this.Hide();
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private void btnStudents_Click(object sender, EventArgs e)
         {
             StudentsScreen studentsScreen = new StudentsScreen();
             studentsScreen.Show();
             this.Hide();
         }
 
-        // Unused handlers (Keep these to avoid designer errors)
-        private void label5_Click(object sender, EventArgs e) { }
-        private void panel1_Paint(object sender, PaintEventArgs e) { }
-        private void panel2_Paint(object sender, PaintEventArgs e) { }
-        private void cmbSection_SelectedIndexChanged(object sender, EventArgs e) { }
+        // Logout
+
+        private void HandleLogout()
+        {
+            DialogResult result = MessageBox.Show("Are you sure you want to log out?",
+                                                  "Confirm Logout",
+                                                  MessageBoxButtons.YesNo,
+                                                  MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                // Clear the session data using the centralized service
+                AuthService.Logout();
+
+                // Open the Login screen and close the current form
+                LoginScreen loginScreen = new LoginScreen();
+                loginScreen.Show();
+                this.Close();
+            }
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            HandleLogout();
+        }
     }
 }

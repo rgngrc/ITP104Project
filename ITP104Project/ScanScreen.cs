@@ -18,7 +18,7 @@ namespace ITP104Project
 {
     public partial class ScanScreen : Form
     {
-
+        //Change IP address according to your mobile IP Webcam app's IP
         private string phoneCameraURL = "http://192.168.1.6:8080/shot.jpg";
         private Timer frameTimer;
         private BarcodeReader reader;
@@ -46,7 +46,7 @@ namespace ITP104Project
         private void ScanScreen_Load(object sender, EventArgs e)
         {
             frameTimer.Start(); // Start fetching frames
-            LoadRecentScans();  // Load recent scans on form load
+            LoadScansToday();  // Load scans today
         }
 
         private async void FrameTimer_Tick(object sender, EventArgs e)
@@ -71,7 +71,7 @@ namespace ITP104Project
                     {
                         MessageBox.Show($"Attendance marked for Student ID: {studentId}", "Success",
                                         MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        LoadRecentScans();
+                        LoadScansToday();
                     }
                     else
                     {
@@ -138,9 +138,9 @@ namespace ITP104Project
                     using (MySqlCommand cmdInsert = new MySqlCommand(insertQuery, conn))
                     {
                         cmdInsert.Parameters.AddWithValue("@studentId", studentId);
-                        cmdInsert.Parameters.AddWithValue("@scannerId", 1);   // replace with your scanner ID
-                        cmdInsert.Parameters.AddWithValue("@result", "In"); // or "In"/"Out" depending on your app
-                        cmdInsert.Parameters.AddWithValue("@usersId", 1);     // replace with the user ID who is scanning
+                        cmdInsert.Parameters.AddWithValue("@scannerId", 1);
+                        cmdInsert.Parameters.AddWithValue("@result", "In");
+                        cmdInsert.Parameters.AddWithValue("@usersId", 1); 
                         cmdInsert.ExecuteNonQuery();
                     }
 
@@ -156,7 +156,7 @@ namespace ITP104Project
             }
         }
 
-        private void LoadRecentScans()
+        private void LoadScansToday()
         {
             try
             {
@@ -167,19 +167,19 @@ namespace ITP104Project
                     string query = @"
                         SELECT A.student_id AS 'Student ID', 
                                S.full_name AS 'Student Name', 
-                               A.timestamp AS 'Time In/Out'
+                               A.timestamp AS 'Date & Time'
                         FROM Attendance A
                         INNER JOIN Students S ON A.student_id = S.student_id
-                        ORDER BY A.timestamp DESC
-                        LIMIT 10;";
+                        WHERE DATE(A.timestamp) = CURDATE() -- Filter records to only today's date
+                        ORDER BY A.timestamp DESC;";
 
                     using (MySqlDataAdapter adapter = new MySqlDataAdapter(query, conn))
                     {
                         DataTable dt = new DataTable();
                         adapter.Fill(dt);
 
-                        dataGridView1.DataSource = dt;
-                        dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                        dgvScansToday.DataSource = dt;
+                        dgvScansToday.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                     }
                 }
             }
@@ -189,76 +189,49 @@ namespace ITP104Project
             }
         }
 
-        private void ScanScreen_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            frameTimer.Stop();
-            pictureBox6.Image?.Dispose();
-        }
-    
-
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        //CamBox
-        private void pictureBox6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel4_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button3_Click(object sender, EventArgs e)
+        private void btnAttendance_Click(object sender, EventArgs e)
         {
             AttendanceScreen attendanceScreen = new AttendanceScreen();
             attendanceScreen.Show();
             this.Hide();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btnDashboard_Click(object sender, EventArgs e)
         {
             DashboardScreen dashboardScreen = new DashboardScreen();
             dashboardScreen.Show();
             this.Hide();
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private void btnStudents_Click(object sender, EventArgs e)
         {
             StudentsScreen studentsScreen = new StudentsScreen();
             studentsScreen.Show();
             this.Hide();
         }
 
-
-        // Recent Scans
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void HandleLogout()
         {
+            DialogResult result = MessageBox.Show("Are you sure you want to log out?",
+                                                  "Confirm Logout",
+                                                  MessageBoxButtons.YesNo,
+                                                  MessageBoxIcon.Question);
 
+            if (result == DialogResult.Yes)
+            {
+                // Clear the server/session data using the centralized service
+                AuthService.Logout();
+
+                // Open the Login screen and close the current form
+                LoginScreen loginScreen = new LoginScreen();
+                loginScreen.Show();
+                this.Close();
+            }
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            HandleLogout();
         }
     }
 }
