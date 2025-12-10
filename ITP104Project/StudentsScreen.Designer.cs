@@ -221,7 +221,7 @@
             this.panel3.Location = new System.Drawing.Point(35, 438);
             this.panel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1483, 474);
+            this.panel3.Size = new System.Drawing.Size(1541, 474);
             this.panel3.TabIndex = 5;
             // 
             // dgvStudents
@@ -242,7 +242,7 @@
             this.dgvStudents.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvStudents.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
             this.dgvStudents.RowTemplate.Height = 24;
-            this.dgvStudents.Size = new System.Drawing.Size(1596, 474);
+            this.dgvStudents.Size = new System.Drawing.Size(1535, 474);
             this.dgvStudents.TabIndex = 29;
             // 
             // txtSearchName
@@ -290,7 +290,7 @@
             this.panel2.Controls.Add(this.label5);
             this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.label3);
-            this.panel2.Location = new System.Drawing.Point(35, 197);
+            this.panel2.Location = new System.Drawing.Point(61, 197);
             this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1483, 133);
@@ -445,7 +445,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(50)))), ((int)(((byte)(80)))));
-            this.ClientSize = new System.Drawing.Size(1827, 922);
+            this.ClientSize = new System.Drawing.Size(1900, 966);
             this.Controls.Add(this.pictureBox6);
             this.Controls.Add(this.btnLogout);
             this.Controls.Add(this.btnStudents);

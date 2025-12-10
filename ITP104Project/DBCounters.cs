@@ -10,11 +10,11 @@ namespace ITP104Project
         // Fetches the count of unique students present today.
         public static int GetPresentTodayCount()
         {
-            // Only count unique student_ids for the current date.
+            // Only count unique student_ids for the current date using time_in
             string query = @"
                 SELECT COUNT(DISTINCT student_id)
                 FROM Attendance
-                WHERE DATE(timestamp) = CURDATE();";
+                WHERE DATE(time_in) = CURDATE();";
 
             return ExecuteScalarQuery(query);
         }
@@ -29,11 +29,11 @@ namespace ITP104Project
         // Fetches the total number of scans (log entries/transactions) for the current month.
         public static int GetMonthlyScansCount()
         {
-            // Count ALL attendance records (transactions) for the current year and month.
+            // Count ALL attendance records (transactions) for the current year and month using time_in
             string query = @"
                 SELECT COUNT(*)
                 FROM Attendance
-                WHERE YEAR(timestamp) = YEAR(CURDATE()) AND MONTH(timestamp) = MONTH(CURDATE());";
+                WHERE YEAR(time_in) = YEAR(CURDATE()) AND MONTH(time_in) = MONTH(CURDATE());";
 
             return ExecuteScalarQuery(query);
         }

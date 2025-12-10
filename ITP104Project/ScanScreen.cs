@@ -19,7 +19,7 @@ namespace ITP104Project
     public partial class ScanScreen : Form
     {
         //Change IP address according to your mobile IP Webcam app's IP
-        private string phoneCameraURL = "http://192.168.1.6:8080/shot.jpg";
+        private string phoneCameraURL = "http://192.168.100.125:8080/shot.jpg";
         private Timer frameTimer;
         private BarcodeReader reader;
 
@@ -58,28 +58,17 @@ namespace ITP104Project
                 pictureBox6.Image?.Dispose();
                 pictureBox6.Image = (Bitmap)frame.Clone();
 
-                // Try decoding QR code
+                // Try decoding QR/Barcode
                 var result = reader.Decode(frame);
                 frame.Dispose();
 
                 if (result != null)
                 {
-                    frameTimer.Stop(); // pause to prevent duplicate scans
                     string studentId = result.Text;
-
                     if (MarkAttendance(studentId))
                     {
-                        MessageBox.Show($"Attendance marked for Student ID: {studentId}", "Success",
-                                        MessageBoxButtons.OK, MessageBoxIcon.Information);
                         LoadScansToday();
                     }
-                    else
-                    {
-                        MessageBox.Show($"Failed to mark attendance. Student ID: {studentId} not found.",
-                                        "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
-
-                    frameTimer.Start(); // resume scanning
                 }
             }
         }
@@ -101,60 +90,120 @@ namespace ITP104Project
             }
         }
 
+        private Dictionary<string, DateTime> lastScanTime = new Dictionary<string, DateTime>();
+
         private bool MarkAttendance(string studentId)
         {
             try
             {
                 using (MySqlConnection conn = DBConnect.GetConnection())
                 {
-                    if (conn == null)
-                    {
-                        MessageBox.Show("Database connection failed!", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return false;
-                    }
+                    if (conn == null) return false;
 
-                    if (conn.State != System.Data.ConnectionState.Open)
-                    {
-                        conn.Open(); // Make sure connection is open
-                    }
+                    conn.Open();
 
-                    // Check if student exists
-                    string checkQuery = "SELECT COUNT(*) FROM Students WHERE student_id = @studentId";
-                    using (MySqlCommand cmdCheck = new MySqlCommand(checkQuery, conn))
+                    // 1. Check if student exists
+                    string checkStudent = "SELECT COUNT(*) FROM Students WHERE student_id = @studentId";
+                    using (MySqlCommand cmd = new MySqlCommand(checkStudent, conn))
                     {
-                        cmdCheck.Parameters.AddWithValue("@studentId", studentId);
-                        object result = cmdCheck.ExecuteScalar();
-                        int count = (result == null || result == DBNull.Value) ? 0 : Convert.ToInt32(result);
-
-                        if (count == 0)
+                        cmd.Parameters.AddWithValue("@studentId", studentId);
+                        if (Convert.ToInt32(cmd.ExecuteScalar()) == 0)
                         {
+                            ShowStatusMessage($"Student ID {studentId} not found");
                             return false;
                         }
                     }
 
-                    string insertQuery = @"
-                    INSERT INTO Attendance(timestamp, student_id, scanner_id, result, users_id)
-                    VALUES(NOW(), @studentId, @scannerId, @result, @usersId)";
-                    using (MySqlCommand cmdInsert = new MySqlCommand(insertQuery, conn))
+                    // 2. Check last scan time (1-minute cooldown)
+                    if (lastScanTime.ContainsKey(studentId))
                     {
-                        cmdInsert.Parameters.AddWithValue("@studentId", studentId);
-                        cmdInsert.Parameters.AddWithValue("@scannerId", 1);
-                        cmdInsert.Parameters.AddWithValue("@result", "In");
-                        cmdInsert.Parameters.AddWithValue("@usersId", 1); 
-                        cmdInsert.ExecuteNonQuery();
+                        DateTime lastTime = lastScanTime[studentId];
+                        if ((DateTime.Now - lastTime).TotalSeconds < 60)
+                        {
+                            return false; // ignore scan if within 1 minute
+                        }
                     }
 
+                    // 3. Check existing attendance today
+                    string checkAttendance = @"
+                        SELECT attendance_id, time_out 
+                        FROM Attendance
+                        WHERE student_id = @studentId
+                        AND DATE(time_in) = CURDATE()
+                        ORDER BY time_in DESC
+                        LIMIT 1";
 
+                    int existingId = 0;
+                    DateTime? timeOut = null;
+
+                    using (MySqlCommand cmd = new MySqlCommand(checkAttendance, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@studentId", studentId);
+                        using (MySqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                existingId = Convert.ToInt32(reader["attendance_id"]);
+                                if (reader["time_out"] != DBNull.Value)
+                                    timeOut = Convert.ToDateTime(reader["time_out"]);
+                            }
+                        }
+                    }
+
+                    // 4. If TIME OUT exists → ignore
+                    if (timeOut != null)
+                    {
+                        lastScanTime[studentId] = DateTime.Now;
+                        return false;
+                    }
+
+                    // 5. If no attendance → TIME IN
+                    if (existingId == 0)
+                    {
+                        string insertQuery = @"
+                            INSERT INTO Attendance (time_in, time_out, student_id, scanner_id, result, users_id)
+                            VALUES (NOW(), NULL, @studentId, @scannerId, 'IN', @usersId)";
+                        using (MySqlCommand cmd = new MySqlCommand(insertQuery, conn))
+                        {
+                            cmd.Parameters.AddWithValue("@studentId", studentId);
+                            cmd.Parameters.AddWithValue("@scannerId", 1);
+                            cmd.Parameters.AddWithValue("@usersId", 1);
+                            cmd.ExecuteNonQuery();
+                        }
+                        ShowStatusMessage($"TIME IN recorded for {studentId}");
+                    }
+                    else
+                    {
+                        // 6. Existing attendance without TIME OUT → TIME OUT
+                        string updateQuery = @"
+                            UPDATE Attendance 
+                            SET time_out = NOW(), result = 'OUT'
+                            WHERE attendance_id = @id";
+                        using (MySqlCommand cmd = new MySqlCommand(updateQuery, conn))
+                        {
+                            cmd.Parameters.AddWithValue("@id", existingId);
+                            cmd.ExecuteNonQuery();
+                        }
+                        ShowStatusMessage($"TIME OUT recorded for {studentId}");
+                    }
+
+                    lastScanTime[studentId] = DateTime.Now;
                     return true;
                 }
             }
-            catch (Exception ex)
+            catch
             {
-                MessageBox.Show("Error marking attendance: " + ex.Message,
-                                "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
+                return false; // silently fail
             }
         }
+        private async void ShowStatusMessage(string message)
+        {
+            txtShowMessage.Text = message;
+            await Task.Delay(2000); // show for 2 seconds
+            txtShowMessage.Text = "";
+        }
+
+
 
         private void LoadScansToday()
         {
@@ -165,13 +214,16 @@ namespace ITP104Project
                     if (conn == null) return;
 
                     string query = @"
-                        SELECT A.student_id AS 'Student ID', 
-                               S.full_name AS 'Student Name', 
-                               A.timestamp AS 'Date & Time'
-                        FROM Attendance A
-                        INNER JOIN Students S ON A.student_id = S.student_id
-                        WHERE DATE(A.timestamp) = CURDATE() -- Filter records to only today's date
-                        ORDER BY A.timestamp DESC;";
+                SELECT 
+                    A.student_id AS 'Student ID',
+                    S.full_name AS 'Student Name',
+                    A.time_in AS 'Time In',
+                    A.time_out AS 'Time Out',
+                    A.result AS 'Status'
+                FROM Attendance A
+                INNER JOIN Students S ON A.student_id = S.student_id
+                WHERE DATE(A.time_in) = CURDATE()
+                ORDER BY A.time_in DESC";
 
                     using (MySqlDataAdapter adapter = new MySqlDataAdapter(query, conn))
                     {
@@ -185,9 +237,11 @@ namespace ITP104Project
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error loading recent scans: " + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error loading today's scans: " + ex.Message,
+                                "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
         private void btnAttendance_Click(object sender, EventArgs e)
         {
@@ -232,6 +286,17 @@ namespace ITP104Project
         private void btnLogout_Click(object sender, EventArgs e)
         {
             HandleLogout();
+        }
+
+        private void panel4_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        // Show message when scanned
+        private void txtShowMessage_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

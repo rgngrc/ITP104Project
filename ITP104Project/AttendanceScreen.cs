@@ -181,46 +181,39 @@ namespace ITP104Project
             string selectedSection = cmbSection.SelectedItem?.ToString();
 
             // Start of the dynamic WHERE clause (filtering by date is mandatory)
-            string filterWhereClause = " WHERE DATE(A.timestamp) = @filterDate ";
+            string filterWhereClause = " WHERE DATE(A.time_in) = @filterDate ";
 
             // Add Department filter
             if (deptValue != null && deptValue != DBNull.Value)
-            {
                 filterWhereClause += " AND P.dept_id = @deptId ";
-            }
 
             // Add Program filter
             if (progValue != null && progValue != DBNull.Value)
-            {
                 filterWhereClause += " AND P.program_id = @progId ";
-            }
 
             // Add Year Level filter
             if (!string.IsNullOrEmpty(selectedYearLevel) && selectedYearLevel != "All Year Levels")
-            {
                 filterWhereClause += " AND S.year_level = @yearLevel ";
-            }
 
             // Add Section filter
             if (!string.IsNullOrEmpty(selectedSection) && selectedSection != "All Sections" && selectedSection != "Select Program/Year")
-            {
                 filterWhereClause += " AND S.student_section = @section ";
-            }
 
             // Main query
             string query = $@"
-                SELECT
-                    S.student_id AS 'Student ID',
-                    S.full_name AS 'Student Name',
-                    S.year_level AS 'Year Level',
-                    P.program_code AS Program,
-                    DATE_FORMAT(A.timestamp, '%Y-%m-%d') AS Date,
-                    TIME(A.timestamp) AS 'Time'
-                FROM Students S
-                INNER JOIN Programs P ON S.program_id = P.program_id
-                INNER JOIN Attendance A ON S.student_id = A.student_id
-                {filterWhereClause}
-                ORDER BY A.timestamp DESC;";
+        SELECT
+            S.student_id AS 'Student ID',
+            S.full_name AS 'Student Name',
+            S.year_level AS 'Year Level',
+            P.program_code AS Program,
+            DATE(A.time_in) AS 'Date',
+            TIME(A.time_in) AS 'Time In',
+            TIME(A.time_out) AS 'Time Out'
+        FROM Students S
+        INNER JOIN Programs P ON S.program_id = P.program_id
+        INNER JOIN Attendance A ON S.student_id = A.student_id
+        {filterWhereClause}
+        ORDER BY A.time_in DESC;";
 
             using (MySqlConnection connection = DBConnect.GetConnection())
             {
@@ -230,9 +223,8 @@ namespace ITP104Project
                     {
                         MySqlCommand cmd = new MySqlCommand(query, connection);
 
-                        // Add parameters based on the filters included in the WHERE clause
+                        // Add parameters
                         cmd.Parameters.AddWithValue("@filterDate", filterDate.ToString("yyyy-MM-dd"));
-
                         if (deptValue != null && deptValue != DBNull.Value)
                             cmd.Parameters.AddWithValue("@deptId", deptValue);
                         if (progValue != null && progValue != DBNull.Value)

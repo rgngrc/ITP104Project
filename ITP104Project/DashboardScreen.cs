@@ -41,19 +41,19 @@ namespace ITP104Project
 
         private void LoadRecentAttendance()
         {
-            // Query to fetch the 5 most recent attendance records
             string query = @"
-        SELECT 
-            A.timestamp AS 'Time',
-            S.full_name AS 'Student Name',
-            P.program_code AS 'Program',
-            D.dept_name AS 'Department'
-        FROM Attendance A
-        INNER JOIN Students S ON A.student_id = S.student_id
-        INNER JOIN Programs P ON S.program_id = P.program_id
-        INNER JOIN Departments D ON P.dept_id = D.dept_id
-        ORDER BY A.timestamp DESC
-        LIMIT 5;";
+                SELECT 
+                    A.time_in AS 'Time In',
+                    A.time_out AS 'Time Out',
+                    S.full_name AS 'Student Name',
+                    P.program_code AS 'Program',
+                    D.dept_name AS 'Department'
+                FROM Attendance A
+                INNER JOIN Students S ON A.student_id = S.student_id
+                INNER JOIN Programs P ON S.program_id = P.program_id
+                INNER JOIN Departments D ON P.dept_id = D.dept_id
+                ORDER BY A.time_in DESC
+                LIMIT 5;";
 
             using (MySqlConnection connection = DBConnect.GetConnection())
             {
@@ -64,12 +64,10 @@ namespace ITP104Project
                         MySqlCommand cmd = new MySqlCommand(query, connection);
                         MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
                         DataTable dt = new DataTable();
-
                         adapter.Fill(dt);
 
                         dgvRecent.DataSource = dt;
                         dgvRecent.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-
                     }
                     catch (Exception ex)
                     {
@@ -79,6 +77,7 @@ namespace ITP104Project
                 }
             }
         }
+
 
         // Navigation buttons
         private void btnScan_Click(object sender, EventArgs e)
@@ -124,6 +123,11 @@ namespace ITP104Project
         private void btnLogout_Click(object sender, EventArgs e)
         {
             HandleLogout();
+        }
+
+        private void lblPresentToday_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
