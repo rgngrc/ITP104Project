@@ -75,10 +75,10 @@
             this.btnStudents.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnStudents.Font = new System.Drawing.Font("Verdana", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnStudents.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnStudents.Location = new System.Drawing.Point(92, 562);
-            this.btnStudents.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnStudents.Location = new System.Drawing.Point(69, 457);
+            this.btnStudents.Margin = new System.Windows.Forms.Padding(2);
             this.btnStudents.Name = "btnStudents";
-            this.btnStudents.Size = new System.Drawing.Size(157, 32);
+            this.btnStudents.Size = new System.Drawing.Size(118, 26);
             this.btnStudents.TabIndex = 28;
             this.btnStudents.Text = "Students";
             this.btnStudents.UseVisualStyleBackColor = true;
@@ -87,10 +87,10 @@
             // 
             this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
             this.pictureBox5.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox5.InitialImage")));
-            this.pictureBox5.Location = new System.Drawing.Point(27, 556);
-            this.pictureBox5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox5.Location = new System.Drawing.Point(20, 452);
+            this.pictureBox5.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(52, 46);
+            this.pictureBox5.Size = new System.Drawing.Size(39, 37);
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox5.TabIndex = 27;
             this.pictureBox5.TabStop = false;
@@ -99,10 +99,10 @@
             // 
             this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
             this.pictureBox4.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox4.InitialImage")));
-            this.pictureBox4.Location = new System.Drawing.Point(27, 430);
-            this.pictureBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox4.Location = new System.Drawing.Point(20, 349);
+            this.pictureBox4.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(52, 46);
+            this.pictureBox4.Size = new System.Drawing.Size(39, 37);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox4.TabIndex = 26;
             this.pictureBox4.TabStop = false;
@@ -112,10 +112,10 @@
             this.btnAttendance.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAttendance.Font = new System.Drawing.Font("Verdana", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAttendance.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnAttendance.Location = new System.Drawing.Point(92, 437);
-            this.btnAttendance.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnAttendance.Location = new System.Drawing.Point(69, 355);
+            this.btnAttendance.Margin = new System.Windows.Forms.Padding(2);
             this.btnAttendance.Name = "btnAttendance";
-            this.btnAttendance.Size = new System.Drawing.Size(157, 32);
+            this.btnAttendance.Size = new System.Drawing.Size(118, 26);
             this.btnAttendance.TabIndex = 25;
             this.btnAttendance.Text = "Attendance";
             this.btnAttendance.UseVisualStyleBackColor = true;
@@ -125,10 +125,10 @@
             // 
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
             this.pictureBox3.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox3.InitialImage")));
-            this.pictureBox3.Location = new System.Drawing.Point(27, 190);
-            this.pictureBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox3.Location = new System.Drawing.Point(20, 154);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(52, 44);
+            this.pictureBox3.Size = new System.Drawing.Size(39, 36);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox3.TabIndex = 24;
             this.pictureBox3.TabStop = false;
@@ -138,10 +138,10 @@
             this.btnDashboard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDashboard.Font = new System.Drawing.Font("Verdana", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDashboard.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnDashboard.Location = new System.Drawing.Point(92, 196);
-            this.btnDashboard.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnDashboard.Location = new System.Drawing.Point(69, 159);
+            this.btnDashboard.Margin = new System.Windows.Forms.Padding(2);
             this.btnDashboard.Name = "btnDashboard";
-            this.btnDashboard.Size = new System.Drawing.Size(157, 32);
+            this.btnDashboard.Size = new System.Drawing.Size(118, 26);
             this.btnDashboard.TabIndex = 23;
             this.btnDashboard.Text = "Dashboard";
             this.btnDashboard.UseVisualStyleBackColor = true;
@@ -151,10 +151,10 @@
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
             this.pictureBox2.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox2.InitialImage")));
-            this.pictureBox2.Location = new System.Drawing.Point(27, 314);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox2.Location = new System.Drawing.Point(20, 255);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(52, 46);
+            this.pictureBox2.Size = new System.Drawing.Size(39, 37);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 22;
             this.pictureBox2.TabStop = false;
@@ -164,10 +164,10 @@
             this.btnScan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnScan.Font = new System.Drawing.Font("Verdana", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnScan.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnScan.Location = new System.Drawing.Point(92, 321);
-            this.btnScan.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnScan.Location = new System.Drawing.Point(69, 261);
+            this.btnScan.Margin = new System.Windows.Forms.Padding(2);
             this.btnScan.Name = "btnScan";
-            this.btnScan.Size = new System.Drawing.Size(157, 32);
+            this.btnScan.Size = new System.Drawing.Size(118, 26);
             this.btnScan.TabIndex = 19;
             this.btnScan.Text = "Scan";
             this.btnScan.UseVisualStyleBackColor = true;
@@ -177,10 +177,10 @@
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.InitialImage")));
-            this.pictureBox1.Location = new System.Drawing.Point(107, 49);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox1.Location = new System.Drawing.Point(80, 40);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(89, 95);
+            this.pictureBox1.Size = new System.Drawing.Size(67, 77);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 20;
             this.pictureBox1.TabStop = false;
@@ -194,10 +194,10 @@
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.panel2);
-            this.panel1.Location = new System.Drawing.Point(283, -1);
-            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel1.Location = new System.Drawing.Point(212, -1);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1755, 993);
+            this.panel1.Size = new System.Drawing.Size(1316, 807);
             this.panel1.TabIndex = 21;
             // 
             // btnButton
@@ -206,9 +206,10 @@
             this.btnButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnButton.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnButton.ForeColor = System.Drawing.SystemColors.Window;
-            this.btnButton.Location = new System.Drawing.Point(1299, 369);
+            this.btnButton.Location = new System.Drawing.Point(974, 300);
+            this.btnButton.Margin = new System.Windows.Forms.Padding(2);
             this.btnButton.Name = "btnButton";
-            this.btnButton.Size = new System.Drawing.Size(119, 37);
+            this.btnButton.Size = new System.Drawing.Size(89, 30);
             this.btnButton.TabIndex = 7;
             this.btnButton.Text = "Search";
             this.btnButton.UseVisualStyleBackColor = false;
@@ -218,10 +219,10 @@
             // 
             this.panel3.BackColor = System.Drawing.Color.GhostWhite;
             this.panel3.Controls.Add(this.dgvStudents);
-            this.panel3.Location = new System.Drawing.Point(35, 438);
-            this.panel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel3.Location = new System.Drawing.Point(26, 356);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1483, 474);
+            this.panel3.Size = new System.Drawing.Size(1112, 326);
             this.panel3.TabIndex = 5;
             // 
             // dgvStudents
@@ -236,23 +237,23 @@
             this.dgvStudents.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvStudents.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvStudents.Location = new System.Drawing.Point(0, 0);
+            this.dgvStudents.Margin = new System.Windows.Forms.Padding(2);
             this.dgvStudents.Name = "dgvStudents";
             this.dgvStudents.ReadOnly = true;
             this.dgvStudents.RowHeadersWidth = 5;
             this.dgvStudents.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvStudents.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
             this.dgvStudents.RowTemplate.Height = 24;
-            this.dgvStudents.Size = new System.Drawing.Size(1596, 474);
+            this.dgvStudents.Size = new System.Drawing.Size(1138, 326);
             this.dgvStudents.TabIndex = 29;
             // 
             // txtSearchName
             // 
             this.txtSearchName.Font = new System.Drawing.Font("Verdana", 14F);
             this.txtSearchName.ForeColor = System.Drawing.Color.Gray;
-            this.txtSearchName.Location = new System.Drawing.Point(106, 370);
-            this.txtSearchName.Margin = new System.Windows.Forms.Padding(4);
+            this.txtSearchName.Location = new System.Drawing.Point(80, 301);
             this.txtSearchName.Name = "txtSearchName";
-            this.txtSearchName.Size = new System.Drawing.Size(1161, 36);
+            this.txtSearchName.Size = new System.Drawing.Size(872, 30);
             this.txtSearchName.TabIndex = 6;
             this.txtSearchName.TextChanged += new System.EventHandler(this.txtSearchName_TextChanged);
             // 
@@ -261,9 +262,10 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Verdana", 18F, System.Drawing.FontStyle.Bold);
             this.label2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label2.Location = new System.Drawing.Point(55, 124);
+            this.label2.Location = new System.Drawing.Point(41, 101);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(218, 36);
+            this.label2.Size = new System.Drawing.Size(175, 29);
             this.label2.TabIndex = 1;
             this.label2.Text = "Student List";
             // 
@@ -272,9 +274,10 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Verdana", 25.8F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label1.Location = new System.Drawing.Point(52, 50);
+            this.label1.Location = new System.Drawing.Point(39, 41);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(721, 52);
+            this.label1.Size = new System.Drawing.Size(581, 42);
             this.label1.TabIndex = 1;
             this.label1.Text = "Student ID Scanning System";
             // 
@@ -290,10 +293,10 @@
             this.panel2.Controls.Add(this.label5);
             this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.label3);
-            this.panel2.Location = new System.Drawing.Point(35, 197);
-            this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel2.Location = new System.Drawing.Point(26, 160);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1483, 133);
+            this.panel2.Size = new System.Drawing.Size(1112, 108);
             this.panel2.TabIndex = 0;
             // 
             // cmbSection
@@ -303,10 +306,10 @@
             this.cmbSection.Font = new System.Drawing.Font("Verdana", 12F);
             this.cmbSection.FormattingEnabled = true;
             this.cmbSection.IntegralHeight = false;
-            this.cmbSection.Location = new System.Drawing.Point(1050, 65);
-            this.cmbSection.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cmbSection.Location = new System.Drawing.Point(788, 53);
+            this.cmbSection.Margin = new System.Windows.Forms.Padding(2);
             this.cmbSection.Name = "cmbSection";
-            this.cmbSection.Size = new System.Drawing.Size(215, 33);
+            this.cmbSection.Size = new System.Drawing.Size(162, 26);
             this.cmbSection.TabIndex = 12;
             // 
             // cmbYearLevel
@@ -316,10 +319,10 @@
             this.cmbYearLevel.Font = new System.Drawing.Font("Verdana", 12F);
             this.cmbYearLevel.FormattingEnabled = true;
             this.cmbYearLevel.IntegralHeight = false;
-            this.cmbYearLevel.Location = new System.Drawing.Point(800, 65);
-            this.cmbYearLevel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cmbYearLevel.Location = new System.Drawing.Point(600, 53);
+            this.cmbYearLevel.Margin = new System.Windows.Forms.Padding(2);
             this.cmbYearLevel.Name = "cmbYearLevel";
-            this.cmbYearLevel.Size = new System.Drawing.Size(215, 33);
+            this.cmbYearLevel.Size = new System.Drawing.Size(162, 26);
             this.cmbYearLevel.TabIndex = 11;
             this.cmbYearLevel.SelectedIndexChanged += new System.EventHandler(this.cmbYearLevel_SelectedIndexChanged);
             // 
@@ -330,10 +333,10 @@
             this.cmbProgram.Font = new System.Drawing.Font("Verdana", 12F);
             this.cmbProgram.FormattingEnabled = true;
             this.cmbProgram.IntegralHeight = false;
-            this.cmbProgram.Location = new System.Drawing.Point(429, 65);
-            this.cmbProgram.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cmbProgram.Location = new System.Drawing.Point(322, 53);
+            this.cmbProgram.Margin = new System.Windows.Forms.Padding(2);
             this.cmbProgram.Name = "cmbProgram";
-            this.cmbProgram.Size = new System.Drawing.Size(337, 33);
+            this.cmbProgram.Size = new System.Drawing.Size(254, 26);
             this.cmbProgram.TabIndex = 10;
             this.cmbProgram.SelectedIndexChanged += new System.EventHandler(this.cmbProgram_SelectedIndexChanged);
             // 
@@ -344,10 +347,10 @@
             this.cmbDepartment.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbDepartment.FormattingEnabled = true;
             this.cmbDepartment.IntegralHeight = false;
-            this.cmbDepartment.Location = new System.Drawing.Point(43, 65);
-            this.cmbDepartment.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cmbDepartment.Location = new System.Drawing.Point(32, 53);
+            this.cmbDepartment.Margin = new System.Windows.Forms.Padding(2);
             this.cmbDepartment.Name = "cmbDepartment";
-            this.cmbDepartment.Size = new System.Drawing.Size(353, 33);
+            this.cmbDepartment.Size = new System.Drawing.Size(266, 26);
             this.cmbDepartment.TabIndex = 9;
             this.cmbDepartment.SelectedIndexChanged += new System.EventHandler(this.cmbDepartment_SelectedIndexChanged);
             // 
@@ -357,10 +360,10 @@
             this.btnFilter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnFilter.Font = new System.Drawing.Font("Verdana", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnFilter.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnFilter.Location = new System.Drawing.Point(1313, 43);
-            this.btnFilter.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnFilter.Location = new System.Drawing.Point(985, 35);
+            this.btnFilter.Margin = new System.Windows.Forms.Padding(2);
             this.btnFilter.Name = "btnFilter";
-            this.btnFilter.Size = new System.Drawing.Size(128, 55);
+            this.btnFilter.Size = new System.Drawing.Size(96, 45);
             this.btnFilter.TabIndex = 8;
             this.btnFilter.Text = "Filter";
             this.btnFilter.UseVisualStyleBackColor = false;
@@ -372,9 +375,10 @@
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("Verdana", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label6.Location = new System.Drawing.Point(1045, 25);
+            this.label6.Location = new System.Drawing.Point(784, 20);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(98, 28);
+            this.label6.Size = new System.Drawing.Size(81, 23);
             this.label6.TabIndex = 7;
             this.label6.Text = "Section";
             // 
@@ -384,9 +388,10 @@
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Verdana", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label5.Location = new System.Drawing.Point(795, 25);
+            this.label5.Location = new System.Drawing.Point(596, 20);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(132, 28);
+            this.label5.Size = new System.Drawing.Size(108, 23);
             this.label5.TabIndex = 6;
             this.label5.Text = "Year Level";
             // 
@@ -396,9 +401,10 @@
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Verdana", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label4.Location = new System.Drawing.Point(424, 25);
+            this.label4.Location = new System.Drawing.Point(318, 20);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(110, 28);
+            this.label4.Size = new System.Drawing.Size(90, 23);
             this.label4.TabIndex = 5;
             this.label4.Text = "Program";
             // 
@@ -408,9 +414,10 @@
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Verdana", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label3.Location = new System.Drawing.Point(38, 25);
+            this.label3.Location = new System.Drawing.Point(28, 20);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(151, 28);
+            this.label3.Size = new System.Drawing.Size(122, 23);
             this.label3.TabIndex = 4;
             this.label3.Text = "Department";
             // 
@@ -418,10 +425,10 @@
             // 
             this.pictureBox6.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox6.Image")));
             this.pictureBox6.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox6.InitialImage")));
-            this.pictureBox6.Location = new System.Drawing.Point(28, 872);
-            this.pictureBox6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox6.Location = new System.Drawing.Point(20, 666);
+            this.pictureBox6.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(52, 46);
+            this.pictureBox6.Size = new System.Drawing.Size(39, 37);
             this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox6.TabIndex = 30;
             this.pictureBox6.TabStop = false;
@@ -431,10 +438,10 @@
             this.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogout.Font = new System.Drawing.Font("Verdana", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogout.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnLogout.Location = new System.Drawing.Point(92, 879);
-            this.btnLogout.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnLogout.Location = new System.Drawing.Point(69, 666);
+            this.btnLogout.Margin = new System.Windows.Forms.Padding(2);
             this.btnLogout.Name = "btnLogout";
-            this.btnLogout.Size = new System.Drawing.Size(157, 32);
+            this.btnLogout.Size = new System.Drawing.Size(118, 26);
             this.btnLogout.TabIndex = 29;
             this.btnLogout.Text = "Logout";
             this.btnLogout.UseVisualStyleBackColor = true;
@@ -442,10 +449,10 @@
             // 
             // StudentsScreen
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(50)))), ((int)(((byte)(80)))));
-            this.ClientSize = new System.Drawing.Size(1827, 922);
+            this.ClientSize = new System.Drawing.Size(1370, 749);
             this.Controls.Add(this.pictureBox6);
             this.Controls.Add(this.btnLogout);
             this.Controls.Add(this.btnStudents);
@@ -459,7 +466,7 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.panel1);
             this.ForeColor = System.Drawing.Color.White;
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "StudentsScreen";
             this.Text = "StudentsScreen";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

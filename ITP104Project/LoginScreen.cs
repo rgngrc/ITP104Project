@@ -8,41 +8,101 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-
 namespace ITP104Project
 {
-    // Simple authentication layout.
     public partial class LoginScreen : Form
     {
-        // Initializes the form components.
         public LoginScreen()
         {
             InitializeComponent();
         }
 
-
-        // Handles the click event for the Login button.
         private void btnLogin_Click(object sender, EventArgs e)
         {
             string username = txtUsername.Text.Trim();
             string password = txtPassword.Text.Trim();
 
-            // Call AuthService to validate login
-            if (AuthService.Login(username, password, out string role))
+            // ===== 1. EMPTY FIELD CHECK =====
+            if (string.IsNullOrEmpty(username) && string.IsNullOrEmpty(password))
             {
-                MessageBox.Show("Login Successful! Welcome " + username + " (Role: " + role + ")", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                // Open Dashboard
-                DashboardScreen dashboard = new DashboardScreen();
-                dashboard.Show();
-                this.Hide();
+                ShowError("Please enter your Username and Password.");
+                ShakeForm();
+                return;
             }
-            else
+            else if (string.IsNullOrEmpty(username))
             {
-                // AuthService handled connection errors, so this means invalid credentials
-                MessageBox.Show("Invalid Username or Password.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                ShowError("Username is required.");
+                txtUsername.Focus();
+                ShakeForm();
+                return;
+            }
+            else if (string.IsNullOrEmpty(password))
+            {
+                ShowError("Password is required.");
+                txtPassword.Focus();
+                ShakeForm();
+                return;
+            }
+
+            try
+            {
+                // ===== 2. CHECK LOGIN =====
+                if (AuthService.Login(username, password, out string role))
+                {
+                    MessageBox.Show(
+                        $"Login Successful!\nWelcome {username} ({role})",
+                        "Success",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
+
+                    DashboardScreen dashboard = new DashboardScreen();
+                    dashboard.Show();
+                    this.Hide();
+                }
+                else
+                {
+                    ShowError("Invalid Username or Password.");
+                    ShakeForm();
+                }
+            }
+            catch (Exception ex)
+            {
+                // ===== 3. CRASH-PROOF ERROR HANDLING =====
+                ShowError("An unexpected system error occurred.\n\nDetails:\n" + ex.Message);
             }
         }
 
+        // Reusable Error Popup
+        private void ShowError(string message)
+        {
+            MessageBox.Show(
+                message,
+                "Error",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Warning);
+        }
+
+        // Shake animation for wrong login
+        private void ShakeForm()
+        {
+            int originalX = this.Left;
+
+            for (int i = 0; i < 5; i++)
+            {
+                this.Left += 10;
+                System.Threading.Thread.Sleep(20);
+                this.Left -= 20;
+                System.Threading.Thread.Sleep(20);
+                this.Left += 10;
+                System.Threading.Thread.Sleep(20);
+            }
+
+            this.Left = originalX;
+        }
+
+        private void LoginScreen_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

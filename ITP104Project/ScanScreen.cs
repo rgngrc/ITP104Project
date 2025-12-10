@@ -233,5 +233,10 @@ namespace ITP104Project
         {
             HandleLogout();
         }
+
+        private void pictureBox7_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
