@@ -82,7 +82,6 @@
             this.lblLogin.Size = new System.Drawing.Size(185, 63);
             this.lblLogin.TabIndex = 2;
             this.lblLogin.Text = "LOGIN";
-            this.lblLogin.Click += new System.EventHandler(this.lblLogin_Click);
             // 
             // txtUsername
             // 
@@ -95,7 +94,6 @@
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(499, 33);
             this.txtUsername.TabIndex = 3;
-            this.txtUsername.TextChanged += new System.EventHandler(this.txtUsername_TextChanged);
             // 
             // lblStudentNum
             // 
@@ -109,7 +107,6 @@
             this.lblStudentNum.Size = new System.Drawing.Size(70, 17);
             this.lblStudentNum.TabIndex = 4;
             this.lblStudentNum.Text = "Username:";
-            this.lblStudentNum.Click += new System.EventHandler(this.label1_Click);
             // 
             // lblPassword
             // 
@@ -123,7 +120,6 @@
             this.lblPassword.Size = new System.Drawing.Size(65, 17);
             this.lblPassword.TabIndex = 6;
             this.lblPassword.Text = "Password:";
-            this.lblPassword.Click += new System.EventHandler(this.lblPassword_Click);
             // 
             // panel1
             // 
@@ -133,7 +129,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(512, 6);
             this.panel1.TabIndex = 7;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // btnLogin
             // 
@@ -172,7 +167,6 @@
             this.panelUsername.Name = "panelUsername";
             this.panelUsername.Size = new System.Drawing.Size(511, 55);
             this.panelUsername.TabIndex = 10;
-            this.panelUsername.Paint += new System.Windows.Forms.PaintEventHandler(this.panelUsername_Paint);
             // 
             // txtPassword
             // 
@@ -186,7 +180,6 @@
             this.txtPassword.Size = new System.Drawing.Size(499, 33);
             this.txtPassword.TabIndex = 3;
             this.txtPassword.UseSystemPasswordChar = true;
-            this.txtPassword.TextChanged += new System.EventHandler(this.txtPassword_TextChanged);
             // 
             // panelPassword
             // 
@@ -211,7 +204,6 @@
             this.lblWelcome.Size = new System.Drawing.Size(469, 70);
             this.lblWelcome.TabIndex = 12;
             this.lblWelcome.Text = "Roan University";
-            this.lblWelcome.Click += new System.EventHandler(this.lblWelcome_Click);
             // 
             // label1
             // 
@@ -225,7 +217,6 @@
             this.label1.Size = new System.Drawing.Size(317, 63);
             this.label1.TabIndex = 13;
             this.label1.Text = "Welcome to";
-            this.label1.Click += new System.EventHandler(this.label1_Click_1);
             // 
             // LoginScreen
             // 
@@ -248,7 +239,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login - Roan University";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.LoginScreen_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).EndInit();
             this.panelUsername.ResumeLayout(false);
             this.panelUsername.PerformLayout();
