@@ -40,6 +40,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.dgvAttendanceRecords = new System.Windows.Forms.DataGridView();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.panel2 = new System.Windows.Forms.Panel();
             this.cmbYearLevel = new System.Windows.Forms.ComboBox();
@@ -53,7 +54,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.dgvAttendanceRecords = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -61,8 +61,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
-            this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAttendanceRecords)).BeginInit();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // button5
@@ -205,11 +205,21 @@
             this.panel3.Size = new System.Drawing.Size(1596, 578);
             this.panel3.TabIndex = 4;
             // 
+            // dgvAttendanceRecords
+            // 
+            this.dgvAttendanceRecords.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvAttendanceRecords.Location = new System.Drawing.Point(2, 3);
+            this.dgvAttendanceRecords.Name = "dgvAttendanceRecords";
+            this.dgvAttendanceRecords.RowHeadersWidth = 51;
+            this.dgvAttendanceRecords.RowTemplate.Height = 24;
+            this.dgvAttendanceRecords.Size = new System.Drawing.Size(1571, 338);
+            this.dgvAttendanceRecords.TabIndex = 0;
+            // 
             // dateTimePicker1
             // 
             this.dateTimePicker1.CalendarFont = new System.Drawing.Font("Verdana", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateTimePicker1.Font = new System.Drawing.Font("Verdana", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker1.Location = new System.Drawing.Point(59, 400);
+            this.dateTimePicker1.Location = new System.Drawing.Point(601, 399);
             this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(535, 40);
@@ -372,16 +382,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Student ID Scanning System";
             // 
-            // dgvAttendanceRecords
-            // 
-            this.dgvAttendanceRecords.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvAttendanceRecords.Location = new System.Drawing.Point(2, 3);
-            this.dgvAttendanceRecords.Name = "dgvAttendanceRecords";
-            this.dgvAttendanceRecords.RowHeadersWidth = 51;
-            this.dgvAttendanceRecords.RowTemplate.Height = 24;
-            this.dgvAttendanceRecords.Size = new System.Drawing.Size(1571, 338);
-            this.dgvAttendanceRecords.TabIndex = 0;
-            // 
             // AttendanceScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -411,9 +411,9 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAttendanceRecords)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvAttendanceRecords)).EndInit();
             this.ResumeLayout(false);
 
         }

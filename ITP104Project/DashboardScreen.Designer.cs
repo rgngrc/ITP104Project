@@ -29,59 +29,62 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DashboardScreen));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            this.button5 = new System.Windows.Forms.Button();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.btnStudents = new System.Windows.Forms.Button();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnAttendance = new System.Windows.Forms.Button();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnDashboard = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnScan = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.panelBG = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblMonthly = new System.Windows.Forms.Label();
+            this.button6 = new System.Windows.Forms.Button();
+            this.labelMonthly = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.label6 = new System.Windows.Forms.Label();
+            this.lblRecentScans = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.dgvRecent = new System.Windows.Forms.DataGridView();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.lblTotalStudents = new System.Windows.Forms.Label();
             this.button7 = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.lblPresentToday = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.dgvRecent = new System.Windows.Forms.DataGridView();
+            this.labelPresentToday = new System.Windows.Forms.Label();
+            this.lblDashboard = new System.Windows.Forms.Label();
+            this.lblSystemName = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panelBG.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRecent)).BeginInit();
             this.panel4.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvRecent)).BeginInit();
             this.SuspendLayout();
             // 
-            // button5
+            // btnStudents
             // 
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Font = new System.Drawing.Font("Verdana", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button5.Location = new System.Drawing.Point(99, 564);
-            this.button5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(157, 32);
-            this.button5.TabIndex = 18;
-            this.button5.Text = "Students";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.btnStudents.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnStudents.Font = new System.Drawing.Font("Verdana", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStudents.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnStudents.Location = new System.Drawing.Point(99, 564);
+            this.btnStudents.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnStudents.Name = "btnStudents";
+            this.btnStudents.Size = new System.Drawing.Size(157, 32);
+            this.btnStudents.TabIndex = 18;
+            this.btnStudents.Text = "Students";
+            this.btnStudents.UseVisualStyleBackColor = true;
+            this.btnStudents.Click += new System.EventHandler(this.btnStudents_Click);
             // 
             // pictureBox5
             // 
@@ -107,19 +110,19 @@
             this.pictureBox4.TabIndex = 16;
             this.pictureBox4.TabStop = false;
             // 
-            // button3
+            // btnAttendance
             // 
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Verdana", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button3.Location = new System.Drawing.Point(99, 439);
-            this.button3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(157, 32);
-            this.button3.TabIndex = 15;
-            this.button3.Text = "Attendance";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.btnAttendance.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAttendance.Font = new System.Drawing.Font("Verdana", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAttendance.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnAttendance.Location = new System.Drawing.Point(99, 439);
+            this.btnAttendance.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnAttendance.Name = "btnAttendance";
+            this.btnAttendance.Size = new System.Drawing.Size(157, 32);
+            this.btnAttendance.TabIndex = 15;
+            this.btnAttendance.Text = "Attendance";
+            this.btnAttendance.UseVisualStyleBackColor = true;
+            this.btnAttendance.Click += new System.EventHandler(this.btnAttendance_Click);
             // 
             // pictureBox3
             // 
@@ -133,19 +136,18 @@
             this.pictureBox3.TabIndex = 14;
             this.pictureBox3.TabStop = false;
             // 
-            // button2
+            // btnDashboard
             // 
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Verdana", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button2.Location = new System.Drawing.Point(99, 198);
-            this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(157, 32);
-            this.button2.TabIndex = 13;
-            this.button2.Text = "Dashboard";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btnDashboard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDashboard.Font = new System.Drawing.Font("Verdana", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDashboard.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnDashboard.Location = new System.Drawing.Point(99, 198);
+            this.btnDashboard.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnDashboard.Name = "btnDashboard";
+            this.btnDashboard.Size = new System.Drawing.Size(157, 32);
+            this.btnDashboard.TabIndex = 13;
+            this.btnDashboard.Text = "Dashboard";
+            this.btnDashboard.UseVisualStyleBackColor = true;
             // 
             // pictureBox2
             // 
@@ -159,19 +161,19 @@
             this.pictureBox2.TabIndex = 12;
             this.pictureBox2.TabStop = false;
             // 
-            // button1
+            // btnScan
             // 
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Verdana", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button1.Location = new System.Drawing.Point(99, 322);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(157, 32);
-            this.button1.TabIndex = 9;
-            this.button1.Text = "Scann";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            this.btnScan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnScan.Font = new System.Drawing.Font("Verdana", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnScan.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnScan.Location = new System.Drawing.Point(99, 322);
+            this.btnScan.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnScan.Name = "btnScan";
+            this.btnScan.Size = new System.Drawing.Size(157, 32);
+            this.btnScan.TabIndex = 9;
+            this.btnScan.Text = "Scan";
+            this.btnScan.UseVisualStyleBackColor = true;
+            this.btnScan.Click += new System.EventHandler(this.btnScan_Click);
             // 
             // pictureBox1
             // 
@@ -185,85 +187,145 @@
             this.pictureBox1.TabIndex = 10;
             this.pictureBox1.TabStop = false;
             // 
+            // panelBG
+            // 
+            this.panelBG.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(111)))), ((int)(((byte)(157)))));
+            this.panelBG.Controls.Add(this.panel1);
+            this.panelBG.Controls.Add(this.panel5);
+            this.panelBG.Controls.Add(this.panel3);
+            this.panelBG.Controls.Add(this.panel4);
+            this.panelBG.Controls.Add(this.panel2);
+            this.panelBG.Controls.Add(this.lblDashboard);
+            this.panelBG.Controls.Add(this.lblSystemName);
+            this.panelBG.Location = new System.Drawing.Point(291, -2);
+            this.panelBG.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panelBG.Name = "panelBG";
+            this.panelBG.Size = new System.Drawing.Size(1755, 1000);
+            this.panelBG.TabIndex = 11;
+            // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(111)))), ((int)(((byte)(157)))));
-            this.panel1.Controls.Add(this.panel5);
-            this.panel1.Controls.Add(this.panel3);
-            this.panel1.Controls.Add(this.chart1);
-            this.panel1.Controls.Add(this.panel4);
-            this.panel1.Controls.Add(this.panel2);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(291, 14);
+            this.panel1.BackColor = System.Drawing.Color.GhostWhite;
+            this.panel1.Controls.Add(this.lblMonthly);
+            this.panel1.Controls.Add(this.button6);
+            this.panel1.Controls.Add(this.labelMonthly);
+            this.panel1.Location = new System.Drawing.Point(1010, 200);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1755, 930);
-            this.panel1.TabIndex = 11;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            this.panel1.Size = new System.Drawing.Size(285, 190);
+            this.panel1.TabIndex = 9;
+            // 
+            // lblMonthly
+            // 
+            this.lblMonthly.AutoSize = true;
+            this.lblMonthly.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMonthly.Location = new System.Drawing.Point(101, 49);
+            this.lblMonthly.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblMonthly.Name = "lblMonthly";
+            this.lblMonthly.Size = new System.Drawing.Size(63, 69);
+            this.lblMonthly.TabIndex = 10;
+            this.lblMonthly.Text = "0";
+            // 
+            // button6
+            // 
+            this.button6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(50)))), ((int)(((byte)(80)))));
+            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button6.Font = new System.Drawing.Font("Verdana", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button6.ForeColor = System.Drawing.SystemColors.Control;
+            this.button6.Location = new System.Drawing.Point(1327, 62);
+            this.button6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(128, 55);
+            this.button6.TabIndex = 7;
+            this.button6.Text = "Filter";
+            this.button6.UseVisualStyleBackColor = false;
+            // 
+            // labelMonthly
+            // 
+            this.labelMonthly.AutoSize = true;
+            this.labelMonthly.BackColor = System.Drawing.Color.Transparent;
+            this.labelMonthly.Font = new System.Drawing.Font("Verdana", 13F);
+            this.labelMonthly.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.labelMonthly.Location = new System.Drawing.Point(62, 137);
+            this.labelMonthly.Name = "labelMonthly";
+            this.labelMonthly.Size = new System.Drawing.Size(172, 26);
+            this.labelMonthly.TabIndex = 3;
+            this.labelMonthly.Text = "Monthly Scans";
             // 
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(50)))), ((int)(((byte)(80)))));
-            this.panel5.Controls.Add(this.label6);
-            this.panel5.Location = new System.Drawing.Point(36, 391);
+            this.panel5.Controls.Add(this.lblRecentScans);
+            this.panel5.Location = new System.Drawing.Point(101, 443);
             this.panel5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(1007, 44);
+            this.panel5.Size = new System.Drawing.Size(1200, 83);
             this.panel5.TabIndex = 19;
-            this.panel5.Paint += new System.Windows.Forms.PaintEventHandler(this.panel5_Paint);
             // 
-            // label6
+            // lblRecentScans
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Bold);
-            this.label6.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label6.Location = new System.Drawing.Point(344, 14);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(278, 20);
-            this.label6.TabIndex = 4;
-            this.label6.Text = "Recent Scans and Attendace";
+            this.lblRecentScans.AutoSize = true;
+            this.lblRecentScans.Font = new System.Drawing.Font("Verdana", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRecentScans.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lblRecentScans.Location = new System.Drawing.Point(498, 25);
+            this.lblRecentScans.Name = "lblRecentScans";
+            this.lblRecentScans.Size = new System.Drawing.Size(226, 34);
+            this.lblRecentScans.TabIndex = 4;
+            this.lblRecentScans.Text = "Recent Scans";
             // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.GhostWhite;
             this.panel3.Controls.Add(this.dgvRecent);
-            this.panel3.Location = new System.Drawing.Point(36, 436);
+            this.panel3.Location = new System.Drawing.Point(100, 519);
             this.panel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1007, 287);
+            this.panel3.Size = new System.Drawing.Size(1200, 376);
             this.panel3.TabIndex = 7;
             // 
-            // chart1
+            // dgvRecent
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(759, 178);
-            this.chart1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.chart1.Name = "chart1";
-            this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Chocolate;
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chart1.Series.Add(series1);
-            this.chart1.Size = new System.Drawing.Size(284, 190);
-            this.chart1.TabIndex = 6;
-            this.chart1.Text = "chart1";
-            this.chart1.Click += new System.EventHandler(this.chart1_Click);
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvRecent.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvRecent.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvRecent.Location = new System.Drawing.Point(1, 2);
+            this.dgvRecent.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dgvRecent.Name = "dgvRecent";
+            this.dgvRecent.ReadOnly = true;
+            this.dgvRecent.RowHeadersWidth = 5;
+            this.dgvRecent.RowTemplate.Height = 40;
+            this.dgvRecent.RowTemplate.ReadOnly = true;
+            this.dgvRecent.Size = new System.Drawing.Size(1200, 372);
+            this.dgvRecent.TabIndex = 0;
             // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.GhostWhite;
+            this.panel4.Controls.Add(this.lblTotalStudents);
             this.panel4.Controls.Add(this.button7);
             this.panel4.Controls.Add(this.label5);
-            this.panel4.Location = new System.Drawing.Point(397, 178);
+            this.panel4.Location = new System.Drawing.Point(553, 200);
             this.panel4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(285, 190);
             this.panel4.TabIndex = 5;
+            // 
+            // lblTotalStudents
+            // 
+            this.lblTotalStudents.AutoSize = true;
+            this.lblTotalStudents.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalStudents.Location = new System.Drawing.Point(100, 49);
+            this.lblTotalStudents.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblTotalStudents.Name = "lblTotalStudents";
+            this.lblTotalStudents.Size = new System.Drawing.Size(63, 69);
+            this.lblTotalStudents.TabIndex = 9;
+            this.lblTotalStudents.Text = "0";
             // 
             // button7
             // 
@@ -285,7 +347,7 @@
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Verdana", 13F);
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.label5.Location = new System.Drawing.Point(49, 137);
+            this.label5.Location = new System.Drawing.Point(59, 136);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(172, 26);
             this.label5.TabIndex = 3;
@@ -294,13 +356,25 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.GhostWhite;
+            this.panel2.Controls.Add(this.lblPresentToday);
             this.panel2.Controls.Add(this.button4);
-            this.panel2.Controls.Add(this.label3);
-            this.panel2.Location = new System.Drawing.Point(36, 178);
+            this.panel2.Controls.Add(this.labelPresentToday);
+            this.panel2.Location = new System.Drawing.Point(101, 200);
             this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(285, 190);
             this.panel2.TabIndex = 3;
+            // 
+            // lblPresentToday
+            // 
+            this.lblPresentToday.AutoSize = true;
+            this.lblPresentToday.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPresentToday.Location = new System.Drawing.Point(101, 49);
+            this.lblPresentToday.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblPresentToday.Name = "lblPresentToday";
+            this.lblPresentToday.Size = new System.Drawing.Size(63, 69);
+            this.lblPresentToday.TabIndex = 8;
+            this.lblPresentToday.Text = "0";
             // 
             // button4
             // 
@@ -316,69 +390,56 @@
             this.button4.Text = "Filter";
             this.button4.UseVisualStyleBackColor = false;
             // 
-            // label3
+            // labelPresentToday
             // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Verdana", 13F);
-            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.label3.Location = new System.Drawing.Point(49, 137);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(167, 26);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Present Today";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
+            this.labelPresentToday.AutoSize = true;
+            this.labelPresentToday.BackColor = System.Drawing.Color.Transparent;
+            this.labelPresentToday.Font = new System.Drawing.Font("Verdana", 13F);
+            this.labelPresentToday.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.labelPresentToday.Location = new System.Drawing.Point(49, 137);
+            this.labelPresentToday.Name = "labelPresentToday";
+            this.labelPresentToday.Size = new System.Drawing.Size(167, 26);
+            this.labelPresentToday.TabIndex = 3;
+            this.labelPresentToday.Text = "Present Today";
             // 
-            // label2
+            // lblDashboard
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Verdana", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label2.Location = new System.Drawing.Point(29, 117);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(197, 36);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Dashboard";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
+            this.lblDashboard.AutoSize = true;
+            this.lblDashboard.Font = new System.Drawing.Font("Verdana", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDashboard.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lblDashboard.Location = new System.Drawing.Point(94, 139);
+            this.lblDashboard.Name = "lblDashboard";
+            this.lblDashboard.Size = new System.Drawing.Size(197, 36);
+            this.lblDashboard.TabIndex = 2;
+            this.lblDashboard.Text = "Dashboard";
             // 
-            // label1
+            // lblSystemName
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Verdana", 25.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label1.Location = new System.Drawing.Point(27, 37);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(521, 52);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Student Attendance ";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
-            // 
-            // dgvRecent
-            // 
-            this.dgvRecent.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvRecent.Location = new System.Drawing.Point(3, 2);
-            this.dgvRecent.Name = "dgvRecent";
-            this.dgvRecent.RowHeadersWidth = 51;
-            this.dgvRecent.RowTemplate.Height = 24;
-            this.dgvRecent.Size = new System.Drawing.Size(1001, 286);
-            this.dgvRecent.TabIndex = 0;
+            this.lblSystemName.AutoSize = true;
+            this.lblSystemName.Font = new System.Drawing.Font("Verdana", 25.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSystemName.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lblSystemName.Location = new System.Drawing.Point(92, 59);
+            this.lblSystemName.Name = "lblSystemName";
+            this.lblSystemName.Size = new System.Drawing.Size(721, 52);
+            this.lblSystemName.TabIndex = 1;
+            this.lblSystemName.Text = "Student ID Scanning System";
             // 
             // DashboardScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(50)))), ((int)(((byte)(80)))));
-            this.ClientSize = new System.Drawing.Size(1371, 750);
-            this.Controls.Add(this.button5);
+            this.ClientSize = new System.Drawing.Size(1650, 920);
+            this.Controls.Add(this.btnStudents);
             this.Controls.Add(this.pictureBox5);
             this.Controls.Add(this.pictureBox4);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.btnAttendance);
             this.Controls.Add(this.pictureBox3);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btnDashboard);
             this.Controls.Add(this.pictureBox2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnScan);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panelBG);
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(111)))), ((int)(((byte)(157)))));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "DashboardScreen";
@@ -390,46 +451,52 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panelBG.ResumeLayout(false);
+            this.panelBG.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             this.panel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRecent)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvRecent)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button btnStudents;
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.PictureBox pictureBox4;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnAttendance;
         private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnDashboard;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnScan;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Panel panelBG;
+        private System.Windows.Forms.Label lblSystemName;
+        private System.Windows.Forms.Label lblDashboard;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label labelPresentToday;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label lblRecentScans;
         private System.Windows.Forms.DataGridView dgvRecent;
+        private System.Windows.Forms.Label lblPresentToday;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Label labelMonthly;
+        private System.Windows.Forms.Label lblTotalStudents;
+        private System.Windows.Forms.Label lblMonthly;
     }
 }
 
