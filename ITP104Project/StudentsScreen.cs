@@ -18,16 +18,15 @@ namespace ITP104Project
 
         private void StudentsScreen_Load(object sender, EventArgs e)
         {
-            // 1. Populate initial independent filters
+            // Populate filters
             PopulateDepartments();
             PopulateYearLevels();
 
-            // Note: LoadStudentData is called here, and it will initially load ALL students 
-            // because all combo boxes default to "All..." and pass DBNull.Value.
+            // Load data grid
             LoadStudentData();
         }
 
-        // --- FILTER POPULATION LOGIC ---
+        // FILTER POPULATION LOGIC
 
         private void PopulateDepartments()
         {
@@ -43,7 +42,6 @@ namespace ITP104Project
                         DataTable dt = new DataTable();
                         adapter.Fill(dt);
 
-                        // Add a default "All" option
                         DataRow allRow = dt.NewRow();
                         allRow["dept_name"] = "All Departments";
                         allRow["dept_id"] = DBNull.Value;
@@ -53,8 +51,6 @@ namespace ITP104Project
                         cmbDepartment.ValueMember = "dept_id";
                         cmbDepartment.DataSource = dt;
 
-                        // Setting SelectedIndex to 0 triggers cmbDepartment_SelectedIndexChanged, 
-                        // which then calls PopulatePrograms(), setting up the cascade.
                         cmbDepartment.SelectedIndex = 0;
                     }
                     catch (Exception ex)
@@ -90,7 +86,6 @@ namespace ITP104Project
                     {
                         MySqlCommand cmd = new MySqlCommand(query, connection);
 
-                        // Add parameter only if necessary
                         if (deptId != null && deptId != DBNull.Value)
                         {
                             cmd.Parameters.AddWithValue("@deptId", deptId);
@@ -100,7 +95,6 @@ namespace ITP104Project
                         DataTable dt = new DataTable();
                         adapter.Fill(dt);
 
-                        // Add a default "All" option
                         DataRow allRow = dt.NewRow();
                         allRow["program_name"] = "All Programs";
                         allRow["program_id"] = DBNull.Value;
@@ -110,8 +104,7 @@ namespace ITP104Project
                         cmbProgram.ValueMember = "program_id";
                         cmbProgram.DataSource = dt;
 
-                        // Set default selection. This should trigger cmbProgram_SelectedIndexChanged 
-                        // which then calls PopulateSectionsByFilters().
+                        // Set default selection
                         if (cmbProgram.Items.Count > 0)
                         {
                             cmbProgram.SelectedIndex = 0;
@@ -127,13 +120,13 @@ namespace ITP104Project
 
         private void PopulateYearLevels()
         {
-            // Static list for Year Levels (No DB connection needed)
+            // List for Year Levels 
             string[] yearLevels = new string[] { "All Year Levels", "First Year", "Second Year", "Third Year", "Fourth Year" };
             cmbYearLevel.DataSource = yearLevels;
             cmbYearLevel.SelectedIndex = 0; // Set default to "All Year Levels"
         }
 
-        // --- CORRECTED METHOD for Section ComboBox (Populate based on Program AND Year Level) ---
+        // Populate Section ComboBox based on Program AND Year Level
         private void PopulateSectionsByFilters()
         {
             object selectedProgramId = cmbProgram.SelectedValue;
@@ -147,13 +140,12 @@ namespace ITP104Project
             sectionDt.Columns.Add("section_display_name", typeof(string));
             sectionDt.Columns.Add("section_filter_value", typeof(object));
 
-            // Check 1: Do not proceed if Program or Year Level filters are not specific
+            // Does not proceed if Program or Year Level filters are not specific
             if (selectedProgramId == null || selectedProgramId == DBNull.Value || selectedYearLevel == "All Year Levels")
             {
-                // Populate with just "All Sections"
                 DataRow allRow = sectionDt.NewRow();
                 allRow["section_display_name"] = "All Sections";
-                allRow["section_filter_value"] = DBNull.Value; // Use DBNull.Value to signify "All"
+                allRow["section_filter_value"] = DBNull.Value;
                 sectionDt.Rows.Add(allRow);
             }
             else
@@ -183,7 +175,6 @@ namespace ITP104Project
                             DataTable tempDt = new DataTable();
                             adapter.Fill(tempDt);
 
-                            // Add the "All Sections" option at the top
                             DataRow allRow = sectionDt.NewRow();
                             allRow["section_display_name"] = "All Sections";
                             allRow["section_filter_value"] = DBNull.Value;
@@ -195,7 +186,7 @@ namespace ITP104Project
                                 DataRow newRow = sectionDt.NewRow();
                                 string sectionName = row["student_section"].ToString();
                                 newRow["section_display_name"] = sectionName;
-                                newRow["section_filter_value"] = sectionName; // The actual section string is the filter value
+                                newRow["section_filter_value"] = sectionName;
                                 sectionDt.Rows.Add(newRow);
                             }
                         }
@@ -203,7 +194,6 @@ namespace ITP104Project
                         {
                             MessageBox.Show("Error loading Sections: " + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-                            // Add "All Sections" as fallback on error
                             DataRow allRow = sectionDt.NewRow();
                             allRow["section_display_name"] = "All Sections";
                             allRow["section_filter_value"] = DBNull.Value;
@@ -221,7 +211,7 @@ namespace ITP104Project
         }
 
 
-        // --- CORRECTED METHOD for Data Loading & Filtering ---
+        // DATA LOADING & FILTERING
 
         private void LoadStudentData()
         {
@@ -231,24 +221,32 @@ namespace ITP104Project
             string selectedYearLevel = cmbYearLevel.SelectedItem?.ToString();
             object selectedSectionValue = cmbSection.SelectedValue;
 
-            // 🆕 GET SEARCH TERM: Get the text from your search input box.
-            // Assuming your search TextBox is named 'txtSearchName'.
+            // Get the text from your search input box.
             string searchTerm = txtSearchName.Text.Trim();
 
             // Base query with joins to get Program and Department info
             string query = @"
                 SELECT
-                    S.student_id AS 'ID No.',
+                    S.student_id AS 'Student ID',
                     S.full_name AS 'Full Name',
                     S.year_level AS 'Year Level',
                     S.student_section AS 'Section',
                     P.program_code AS 'Program',
                     D.dept_name AS 'Department',
-                    S.student_status AS 'Status'
-                FROM Students S
-                INNER JOIN Programs P ON S.program_id = P.program_id
-                INNER JOIN Departments D ON P.dept_id = D.dept_id
-            ";
+                    S.student_status AS 'Status',
+                    S.date_of_birth AS 'Date of Birth',
+                    S.nationality AS 'Nationality',
+                    S.religion AS 'Religion',
+                    S.sex AS 'Sex',
+                    S.contact_number AS 'Contact Number',
+                    S.email_address AS 'Email Address'
+                FROM
+                    Students S
+                INNER JOIN
+                    Programs P ON S.program_id = P.program_id
+                INNER JOIN
+                    Departments D ON P.dept_id = D.dept_id
+                ";
 
             // Build dynamic WHERE clause
             string filterWhereClause = " WHERE 1=1 ";
@@ -271,17 +269,16 @@ namespace ITP104Project
                 filterWhereClause += " AND S.year_level = @yearLevel ";
             }
 
-            // Add Section filter (check if value is NOT DBNull.Value)
+            // Add Section filter
             if (selectedSectionValue != null && selectedSectionValue != DBNull.Value)
             {
                 filterWhereClause += " AND S.student_section = @section ";
             }
 
-            // 🆕 ADD NAME SEARCH FILTER: Uses LIKE and wildcard % for partial matching, case-insensitive.
             if (!string.IsNullOrEmpty(searchTerm))
             {
-                // We use LCASE(S.full_name) and LCASE(@searchTerm) for a case-insensitive search.
-                filterWhereClause += " AND LCASE(S.full_name) LIKE LCASE(@searchTerm) ";
+                // This search allows filtering by ID or Name
+                filterWhereClause += " AND (S.student_id LIKE @searchTerm OR LCASE(S.full_name) LIKE LCASE(@searchTerm)) ";
             }
 
             query += filterWhereClause + " ORDER BY S.student_id ASC;";
@@ -306,7 +303,6 @@ namespace ITP104Project
                         if (selectedSectionValue != null && selectedSectionValue != DBNull.Value)
                             cmd.Parameters.AddWithValue("@section", selectedSectionValue.ToString());
 
-                        // 🆕 ADD SEARCH PARAMETER: Wrap search term in '%' for LIKE
                         if (!string.IsNullOrEmpty(searchTerm))
                             cmd.Parameters.AddWithValue("@searchTerm", "%" + searchTerm + "%");
 
@@ -330,7 +326,7 @@ namespace ITP104Project
             }
         }
 
-        // --- UI EVENT HANDLERS (for cascading filters) ---
+        // UI EVENT HANDLERS
 
         // Cascading Logic: Department changes -> Reload Programs
         private void cmbDepartment_SelectedIndexChanged(object sender, EventArgs e)
@@ -340,13 +336,10 @@ namespace ITP104Project
             {
                 object selectedDeptId = cmbDepartment.SelectedValue;
                 PopulatePrograms(selectedDeptId);
-                // No need to call LoadStudentData here, as changing the Department automatically 
-                // resets the Program which resets the Section, then LoadStudentData should be 
-                // called on btnFilter_Click.
             }
         }
 
-        // ⚠️ NEW/CORRECTED: Program changes -> Reload Sections
+        // Program changes -> Reload Sections
         private void cmbProgram_SelectedIndexChanged(object sender, EventArgs e)
         {
             // Only run if the DataSource is not null
@@ -356,7 +349,7 @@ namespace ITP104Project
             }
         }
 
-        // ⚠️ NEW/CORRECTED: Year Level changes -> Reload Sections
+        // Year Level changes -> Reload Sections
         private void cmbYearLevel_SelectedIndexChanged(object sender, EventArgs e)
         {
             // Only run if the DataSource is not null
@@ -366,16 +359,6 @@ namespace ITP104Project
             }
         }
 
-        // Section change handler
-        private void cmbSection_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            // If you want the grid to auto-refresh whenever the section changes, uncomment this:
-            // LoadStudentData(); 
-        }
-
-        // 🆕 NEW EVENT HANDLER: Live search when typing
-
-
         // Filter button handler
         private void btnFilter_Click(object sender, EventArgs e)
         {
@@ -383,7 +366,7 @@ namespace ITP104Project
             LoadStudentData();
         }
 
-        // --- NAVIGATION HANDLERS ---
+        // Navigation buttons
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -408,7 +391,6 @@ namespace ITP104Project
 
         private void txtSearchName_TextChanged(object sender, EventArgs e)
         {
-
             if (string.IsNullOrEmpty(txtSearchName.Text))
             {
                 LoadStudentData();
@@ -428,7 +410,7 @@ namespace ITP104Project
 
             string query = @"
         SELECT
-            S.student_id AS 'ID No.',
+            S.student_id AS 'Student ID',
             S.full_name AS 'Full Name',
             S.year_level AS 'Year Level',
             S.student_section AS 'Section',
@@ -454,9 +436,9 @@ namespace ITP104Project
             if (selectedSectionValue != null && selectedSectionValue != DBNull.Value)
                 query += " AND S.student_section = @section";
 
-            // 🔍 Search: ID or Name
+            // Search: ID or Name
             if (!string.IsNullOrEmpty(searchText))
-                query += " AND (S.student_id LIKE @search OR S.full_name LIKE @search)";
+                query += " AND (S.student_id LIKE @search OR LCASE(S.full_name) LIKE LCASE(@search))";
 
             query += " ORDER BY S.student_id ASC;";
 
@@ -499,6 +481,32 @@ namespace ITP104Project
                     }
                 }
             }
+        }
+
+        //Logout
+
+        private void HandleLogout()
+        {
+            DialogResult result = MessageBox.Show("Are you sure you want to log out?",
+                                                 "Confirm Logout",
+                                                 MessageBoxButtons.YesNo,
+                                                 MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                // Clear the session data using the centralized service
+                AuthService.Logout();
+
+                // Open the Login screen and close the current form
+                LoginScreen loginScreen = new LoginScreen();
+                loginScreen.Show();
+                this.Close();
+            }
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            HandleLogout();
         }
     }
 }

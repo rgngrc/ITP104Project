@@ -215,7 +215,7 @@ namespace ITP104Project
                     S.year_level AS 'Year Level',
                     P.program_code AS Program,
                     DATE_FORMAT(A.timestamp, '%Y-%m-%d') AS Date,
-                    TIME(A.timestamp) AS 'Time In/Out'
+                    TIME(A.timestamp) AS 'Time'
                 FROM Students S
                 INNER JOIN Programs P ON S.program_id = P.program_id
                 INNER JOIN Attendance A ON S.student_id = A.student_id
@@ -337,5 +337,56 @@ namespace ITP104Project
         {
             HandleLogout();
         }
+
+        // Export
+
+        private void btnExport_Click(object sender, EventArgs e)
+        {
+            ExportDataGridToCsv(dgvAttendanceRecords);
+        }
+
+ 
+        private void ExportDataGridToCsv(DataGridView dgv)
+        {
+            // Configure the SaveFileDialog
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Filter = "CSV File (*.csv)|*.csv";
+            sfd.FileName = $"Attendance_Report_{DateTime.Now:yyyyMMdd_HHmm}.csv";
+
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    // Build the CSV content
+                    // StringBuilder for efficient string concatenation
+                    System.Text.StringBuilder sb = new System.Text.StringBuilder();
+
+                    // Append Header Row
+                    string header = string.Join(",", dgv.Columns.Cast<DataGridViewColumn>().Select(c => $"\"{c.HeaderText}\""));
+                    sb.AppendLine(header);
+
+                    // Append Data Rows
+                    foreach (DataGridViewRow row in dgv.Rows)
+                    {
+                        // Skip the new row placeholder if it exists
+                        if (row.IsNewRow) continue;
+
+                        // Select the value of each cell, enclose in quotes, and join with commas
+                        string line = string.Join(",", row.Cells.Cast<DataGridViewCell>().Select(c => $"\"{c.Value?.ToString().Replace("\"", "\"\"")}\""));
+                        sb.AppendLine(line);
+                    }
+
+                    // Write the content to the selected file
+                    System.IO.File.WriteAllText(sfd.FileName, sb.ToString(), System.Text.Encoding.UTF8);
+
+                    MessageBox.Show("Export successful! Data saved to:\n" + sfd.FileName, "Export Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("An error occurred during export: " + ex.Message, "Export Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
     }
 }
